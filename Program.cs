@@ -10,7 +10,7 @@ namespace Projet_boogle
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("tzst");
+            Console.WriteLine("tzt");
             Console.Read();
         }
     }
