@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Projet_boogle
 {
-    internal class Program
+    internal class De
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("tzst");
-            Console.Read();
-        }
+
+
+        public De() { 
+        } 
     }
 }
