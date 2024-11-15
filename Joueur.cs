@@ -8,6 +8,8 @@ namespace Projet_boogle
 {
     internal class Joueur
     {
-
+        private string nom;
+        private int score;
+        private 
     }
 }
