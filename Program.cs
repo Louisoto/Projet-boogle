@@ -11,6 +11,7 @@ namespace Projet_boogle
         static void Main(string[] args)
         {
             Console.WriteLine("Allo, à l'huile");
+            Console.WriteLine("Skibidi dop dop");
             Console.Read();
         }
     }
