@@ -8,6 +8,7 @@ namespace Projet_boogle
 {
     internal class Jeu
     {
+        private int tourEnCours;
         static void Main(string[] args)
         {
             Console.WriteLine("Allo, à l'huile");

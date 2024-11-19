@@ -53,7 +53,7 @@ namespace Projet_boogle
         /// ajoute le mot dans la liste des mots déjà trouvés par le joueur au cours de la partie en modifiant le nombre d’occurrences si nécessaire
         /// </summary>
         /// <param name="mot"></param>
-        public void Add_Mot(string mot)
+        public void Add_Mot(string mot, int tourEnCours)
         {
 
         }
