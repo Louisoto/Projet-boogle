@@ -5,9 +5,10 @@ namespace Projet_boogle
 {
     internal class De
     {
-        //attributs
+        #region Attributs
         private char[] faces;
         private char face_visible;
+        #endregion
 
         //propriétés
         public char[] Faces { 
