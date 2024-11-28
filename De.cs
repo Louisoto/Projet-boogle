@@ -36,7 +36,7 @@ namespace Projet_boogle
                 faces[i] = Program.Choisir_Lettre_Aleatoire(lettres, probabilite_lettre);
             }
 
-            Lance(Program.random);// on utilie la methode lance pour assigner une face
+            Lance(Program.random);// on utilise la methode lance pour assigner une face
 
             /*
             int numero_face = Program.random.Next(0, 6); //on assigne une des lettre pour dire qu'il sagit de la face
