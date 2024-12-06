@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dictionnaire.cs" />
     <Compile Include="Joueur.cs" />
     <Compile Include="De.cs" />
     <Compile Include="Jeu.cs" />

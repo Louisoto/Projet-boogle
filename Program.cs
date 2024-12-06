@@ -49,10 +49,12 @@ namespace Projet_boogle
                 points_lettre = null;
                 probabilite_lettre = null;
 
-                Console.WriteLine("Erreur lors de la lecture du fichier : " + ex.Message);
+                Console.WriteLine("Erreur lors de la lecture du fichier lettres : " + ex.Message);
 
             }
         }
+
+        
 
         /// <summary>
         /// Choisis une lettre aleatoirement en fonction du pourcentage qu'a chaque lettre d'apparaittre
@@ -77,6 +79,96 @@ namespace Projet_boogle
 
             // Retour par défaut au cas ou (normallement ça sert à rien mais bon on sait jamais)
             return lettres[lettres.Length - 1];
+        }
+
+        public static List<List<string>> Recuperer_Dictionnaire(string fichier)
+        {
+            List<List<string>> dictionnaire = new List<List<string>>();
+            try
+            {
+                string contenu = File.ReadAllText(fichier);
+                string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
+                dictionnaire = tri_taille(mots);
+
+                for (int i = 0; i < dictionnaire.Count; i++)
+                {
+                    if (dictionnaire[i] != null)
+                    {
+                        dictionnaire[i] = tri_fusion(dictionnaire[i]);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                Console.WriteLine("Erreur lors de la lecture du fichier dictionnaire : " + ex.Message);
+            }
+            return dictionnaire;
+        }
+        static List<List<string>> tri_taille(string[] tableau)
+        {
+            List<List<string>> dictionnaire = new List<List<string>>();
+
+            for (int i = 0; i < tableau.Length; i++)
+            {
+                string mot = tableau[i];
+                int index = mot.Length - 2;//comme on considere qu'il n'y a pas de mot de taille 0 ou 1
+                while (index >= dictionnaire.Count)
+                {
+                    dictionnaire.Add(new List<string>());
+                }
+
+                dictionnaire[index].Add(mot);
+            }
+            return dictionnaire;
+        }
+
+        static List<string> tri_fusion(List<string> tableau)
+        {
+            if (tableau.Count <= 1)
+            {
+                return tableau;
+            }
+
+            int milieu = tableau.Count / 2;
+
+            List<string> gauche = new List<string>(tableau.GetRange(0, milieu));
+            List<string> droite = new List<string>(tableau.GetRange(milieu, tableau.Count - milieu));
+
+
+            gauche = tri_fusion(gauche);
+            droite = tri_fusion(droite);
+
+            return Fusionner(gauche, droite);
+        }
+
+        // Fonction pour fusionner des tableaux
+        static List<string> Fusionner(List<string> gauche, List<string> droite)
+        {
+            List<string> resultat = new List<string>();
+            int i = 0, j = 0;
+
+            while (i < gauche.Count && j < droite.Count)
+            {
+                if (gauche[i].CompareTo(droite[j]) <= 0)
+                {
+                    resultat.Add(gauche[i++]);
+                }
+                else
+                {
+                    resultat.Add(droite[j++]);
+                }
+            }
+
+            while (i < gauche.Count)
+            {
+                resultat.Add(gauche[i++]);
+            }
+
+            while (j < droite.Count)
+            {
+                resultat.Add(droite[j++]);
+            }
+
+            return resultat;
         }
     }
 }
