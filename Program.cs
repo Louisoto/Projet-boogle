@@ -21,23 +21,36 @@ namespace Projet_boogle
         /// <param name="fichier"></param>
         public static void lire_fichier_lettres(out char[] lettres, out int[] points_lettre, out int[] probabilite_lettre, string fichier)
         {
-            // Lecture des lignes du fichier
-            string[] lignes_fichier = File.ReadAllLines(fichier);
-
-            // initiqlisation des tableaux
-            lettres = new char[lignes_fichier.Length];
-            points_lettre = new int[lignes_fichier.Length];
-            probabilite_lettre = new int[lignes_fichier.Length];
-
-            for (int i = 0; i < lignes_fichier.Length; i++)
+            try
             {
-                // Découper la ligne en trois parties, chaqu'une separée par ;
-                string[] parties = lignes_fichier[i].Split(';');
+                // Lecture des lignes du fichier
+                string[] lignes_fichier = File.ReadAllLines(fichier);
 
-                // Stocker chaque valeur dans le tableau correspondant
-                lettres[i] = char.Parse(parties[0]);          // lettres
-                points_lettre[i] = int.Parse(parties[1]);     // points pas lettres
-                probabilite_lettre[i] = int.Parse(parties[2]); // probabilité de chasue lettre
+                // initiqlisation des tableaux
+                lettres = new char[lignes_fichier.Length];
+                points_lettre = new int[lignes_fichier.Length];
+                probabilite_lettre = new int[lignes_fichier.Length];
+
+                for (int i = 0; i < lignes_fichier.Length; i++)
+                {
+                    // Découper la ligne en trois parties, chaqu'une separée par ;
+                    string[] parties = lignes_fichier[i].Split(';');
+
+                    // Stocker chaque valeur dans le tableau correspondant
+                    lettres[i] = char.Parse(parties[0]);          // lettres
+                    points_lettre[i] = int.Parse(parties[1]);     // points pas lettres
+                    probabilite_lettre[i] = int.Parse(parties[2]); // probabilité de chasue lettre
+                }
+            }
+
+            catch (Exception ex)
+            {
+                lettres = null;
+                points_lettre = null;
+                probabilite_lettre = null;
+
+                Console.WriteLine("Erreur lors de la lecture du fichier : " + ex.Message);
+
             }
         }
 
