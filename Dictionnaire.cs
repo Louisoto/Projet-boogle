@@ -33,5 +33,23 @@ namespace Projet_boogle
 
             return r;
         }
+
+        public bool Dichotimie(string mot)
+        {
+            int taille_mot = mot.Length - 2;
+            if (taille_mot >= 0 && taille_mot < mots.Count)
+            {
+                int index = Program.Dichotomique(mot[taille_mot], mot, mots[taille_mot].Count - 1);
+                if (index >= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
     }
 }

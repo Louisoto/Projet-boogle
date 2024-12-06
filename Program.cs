@@ -170,5 +170,29 @@ namespace Projet_boogle
 
             return resultat;
         }
+
+
+        public static int Dichotomique(List<string> t, string elem, int fin, int debut = 0)
+        {
+            if (t == null || t.Count == 0 || debut > fin)
+            {
+                return -1;
+            }
+
+            int milieu = (debut + fin) / 2;
+
+            if (t[milieu].CompareTo(elem) == 0) // on a trouvé le mot cherché
+            {
+                return milieu;
+            }
+            else if (t[milieu].CompareTo(elem) > 0) // Le mot cherché est avant
+            {
+                return Dichotomique(t, elem, milieu - 1, debut);
+            }
+            else // Le mot cherché est après
+            {
+                return Dichotomique(t, elem, fin, milieu + 1);
+            }
+        }
     }
 }
