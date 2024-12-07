@@ -12,8 +12,9 @@ namespace Projet_boogle
         public static Random random = new Random();
 
         /// <summary>
-        /// Lit les informations d'un fichier, puis tri chaque colone et place des informations dans trois tableaux differents
-        /// en fonction de la lettre, ses points et sa probabilité d'apparaitre
+        /// Fonction pour lire les informations du fichier lettre, puis tri chaque colone et place des informations dans 
+        /// trois tableaux differents: les lettres, les points et la probabilité d'apparaitre.
+        /// On utilise un try catch pour eviter que ça plante si on ne trouve pas le fichier
         /// </summary>
         /// <param name="lettres"></param>
         /// <param name="points_lettre"></param>
@@ -57,7 +58,12 @@ namespace Projet_boogle
         
 
         /// <summary>
-        /// Choisis une lettre aleatoirement en fonction du pourcentage qu'a chaque lettre d'apparaittre
+        /// Fonction pour choisir une lettre aleatoirement en fonction du pourcentage qu'a chaque lettre d'apparaittre
+        ///
+        /// Explication:
+        /// Le fonctionnement n'est pas intuitif mais comme il n'y a pas de moyen d'utiliser la fonction random pour des pourcentages d'apparaitre.
+        /// On utilise donc un systeme qui va, a chaque iteration, on ajoute le purcentage dans une somme. Si le nombre aléatoire tiré au debut
+        /// est passé (inferieur ou egale) alors c'est la bonne lettre, sinon on test la lettre suivante
         /// </summary>
         /// <param name="lettres"></param>
         /// <param name="probabilite_lettre"></param>
@@ -81,6 +87,19 @@ namespace Projet_boogle
             return lettres[lettres.Length - 1];
         }
 
+        /// <summary>
+        /// Fonction pour lire le fichier dictionnaire en fonction du nom du fichier(si on veut le français ou l'anglais).
+        /// Elle renvoie une liste de liste de string avec l'ensemble de données du tableau. Ainsi chaque sous liste
+        /// correspond à une taille de lettre (ex le premier element regroupe les lettres de deux mots) et chaque sous 
+        /// liste est trié par ordre alphabetique
+        /// 
+        /// Explication:
+        /// On fait tout les operations dans try catch pour eviter les éventuelles plantages. On va d'abord stocker les 
+        /// info dans un tableau mot (ou il y aurait les 130 000 mots en bazar) Puis on va appeler la fonction pour trier 
+        /// les mots en fonction de leurs tailles. Puis pour chaque taille de mot, on applique le tri fusion.
+        /// </summary>
+        /// <param name="fichier"></param>
+        /// <returns> Liste de liste de string trié </returns>
         public static List<List<string>> Recuperer_Dictionnaire(string fichier)
         {
             List<List<string>> dictionnaire = new List<List<string>>();
@@ -103,6 +122,16 @@ namespace Projet_boogle
             }
             return dictionnaire;
         }
+
+        /// <summary>
+        /// Fonction pour trié les mots en fonction de leurs taille, et qui les place dans une liste (en fonction de leurs taille)
+        /// 
+        /// Explication:
+        /// On creer une liste de liste de string, et pour chaque mot on regarde sa taille, et on le place dans une sous liste 
+        /// (on place à l'index taille-2 parce que y'a ni mot sans lettre, ni mot de une lettre
+        /// </summary>
+        /// <param name="tableau"></param>
+        /// <returns></returns>
         static List<List<string>> tri_taille(string[] tableau)
         {
             List<List<string>> dictionnaire = new List<List<string>>();
@@ -121,6 +150,11 @@ namespace Projet_boogle
             return dictionnaire;
         }
 
+        /// <summary>
+        /// Tri fusion classique en recursive, qui prend en entrée une liste de string non trié, et on la trie par ordre alphabetique
+        /// </summary>
+        /// <param name="tableau"></param>
+        /// <returns></returns>
         static List<string> tri_fusion(List<string> tableau)
         {
             if (tableau.Count <= 1)
@@ -140,7 +174,12 @@ namespace Projet_boogle
             return Fusionner(gauche, droite);
         }
 
-        // Fonction pour fusionner des tableaux
+        /// <summary>
+        /// Fonction pour fusionner des tableaux tout en respectant l'ordre alphabetique
+        /// </summary>
+        /// <param name="gauche"></param>
+        /// <param name="droite"></param>
+        /// <returns></returns>
         static List<string> Fusionner(List<string> gauche, List<string> droite)
         {
             List<string> resultat = new List<string>();
@@ -171,7 +210,16 @@ namespace Projet_boogle
             return resultat;
         }
 
-
+        /// <summary>
+        /// Fonction recursive en divisé pour mieux regner de recherche dichotomique, qui prend en entre
+        /// une liste destring, un mot à cherche, et la taille de la liste et qui va de maniere recursive
+        /// chercher l'indice du mot dans ce tableau si on le trouve pas, alors on renvoie -1
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="elem"></param>
+        /// <param name="fin"></param>
+        /// <param name="debut"></param>
+        /// <returns></returns>
         public static int Dichotomique(List<string> t, string elem, int fin, int debut = 0)
         {
             if (t == null || t.Count == 0 || debut > fin)
