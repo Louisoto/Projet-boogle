@@ -38,16 +38,19 @@ namespace Projet_boogle
         {
             for (int i = 0; i < this.tailleJeu; i++)
             {
-
+                for (int j = 0; j < tailleJeu; j++)
+                {
+                    Console.Write(this.jeu[i + j].ToString());
+                }
+                Console.WriteLine();
             }
         }
         static void Main(string[] args)
         {
             Console.WriteLine("Allo, à l'huile");
             Console.WriteLine("Skibidi dop dop");
-            Console.Read();
             Console.Write("Sélectionner vos options : " +
-                "\n Taille du plateau : ");
+                "\nTaille du plateau : ");
             int taillePlateau = int.Parse(Console.ReadLine());
             string langue;
             do
