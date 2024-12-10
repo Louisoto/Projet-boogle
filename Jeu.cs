@@ -34,12 +34,31 @@ namespace Projet_boogle
             }
         }
         #endregion
+        public void Affichage()
+        {
+            for (int i = 0; i < this.tailleJeu; i++)
+            {
+
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Allo, à l'huile");
             Console.WriteLine("Skibidi dop dop");
             Console.Read();
-            Console.WriteLine("Sélectionner vos options : ");
+            Console.Write("Sélectionner vos options : " +
+                "\n Taille du plateau : ");
+            int taillePlateau = int.Parse(Console.ReadLine());
+            string langue;
+            do
+            {
+                Console.Write("Langue du jeu (anglais ou francais) : ");
+                langue = Console.ReadLine();
+            } while (langue != "anglais" && langue != "francais");
+            Console.Write("Nombre de joueur.s souhaité.s : ");
+            int nbJoueurs = int.Parse(Console.ReadLine());
+            Jeu jeu = new Jeu(taillePlateau, nbJoueurs);
+            jeu.Affichage();
         }
     }
 }
