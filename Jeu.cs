@@ -10,15 +10,13 @@ namespace Projet_boogle
     {
         #region Attributs
         private int tourEnCours;
-        private int tailleJeu;
-        private De[] jeu;
+        private Plateau plateau;
         private int nbJoueurs;
         private string[] nomJoueurs;
         #endregion
         #region Constructeur
         public Jeu(int tailleJeu, int nbJoueurs)
         {
-            this.tailleJeu = tailleJeu;
             this.tourEnCours = 0;
             this.nbJoueurs = nbJoueurs;
             this.nomJoueurs = new string[nbJoueurs];
@@ -27,24 +25,9 @@ namespace Projet_boogle
                 Console.Write("Quel est le nom du joueur " + i + " : ");
                 this.nomJoueurs[i] = Console.ReadLine();
             }
-            this.jeu = new De[tailleJeu];
-            for (int i = 0; i < tailleJeu; i++)
-            {
-                jeu[i] = new De();
-            }
+            this.plateau = new Plateau(tailleJeu);
         }
         #endregion
-        public void Affichage()
-        {
-            for (int i = 0; i < this.tailleJeu; i++)
-            {
-                for (int j = 0; j < tailleJeu; j++)
-                {
-                    Console.Write(this.jeu[i + j].ToString());
-                }
-                Console.WriteLine();
-            }
-        }
         static void Main(string[] args)
         {
             Console.Write("Sélectionner vos options : " +
@@ -59,7 +42,7 @@ namespace Projet_boogle
             Console.Write("Nombre de joueur.s souhaité.s : ");
             int nbJoueurs = int.Parse(Console.ReadLine());
             Jeu jeu = new Jeu(taillePlateau, nbJoueurs);
-            jeu.Affichage();
+            jeu.ToString();
         }
     }
 }
