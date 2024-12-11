@@ -25,7 +25,7 @@ namespace Projet_boogle
             try
             {
                 // Lecture des lignes du fichier
-                string[] lignes_fichier = File.ReadAllLines(fichier);
+                string[] lignes_fichier = File.ReadAllLines("../../" + fichier);
 
                 // initiqlisation des tableaux
                 lettres = new char[lignes_fichier.Length];
@@ -105,7 +105,7 @@ namespace Projet_boogle
             List<List<string>> dictionnaire = new List<List<string>>();
             try
             {
-                string contenu = File.ReadAllText(fichier);
+                string contenu = File.ReadAllText("../../" + fichier);
                 string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
                 dictionnaire = tri_taille(mots);
 
