@@ -20,10 +20,10 @@ namespace Projet_boogle
             this.tourEnCours = 0;
             this.nbJoueurs = nbJoueurs;
             this.nomJoueurs = new string[nbJoueurs];
-            for (int i = 0; i < nbJoueurs; i++)
+            for (int i = 1; i <= nbJoueurs; i++)
             {
                 Console.Write("Quel est le nom du joueur " + i + " : ");
-                this.nomJoueurs[i] = Console.ReadLine();
+                this.nomJoueurs[i-1] = Console.ReadLine();
             }
             this.plateau = new Plateau(tailleJeu);
         }

@@ -55,8 +55,6 @@ namespace Projet_boogle
             }
         }
 
-        
-
         /// <summary>
         /// Fonction pour choisir une lettre aleatoirement en fonction du pourcentage qu'a chaque lettre d'apparaittre
         ///
