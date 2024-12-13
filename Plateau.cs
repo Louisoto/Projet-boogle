@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +37,33 @@ namespace Projet_boogle
                 resul += "\n";
             }
             return resul;
+        }
+        public bool Test_Plateau(string mot, int position = -1, List<int> posInvalides = new List<int>())
+        {
+            if (mot == "")
+            {
+                return true;
+            }
+            else
+            {
+                if (position == -1)
+                {
+                    for (int i = 0; i < this.plateau.Length; i++)
+                    {
+                        if (this.plateau[i].Face_visible == mot[0])
+                        {
+                            return Test_Plateau(mot.Substring(1), i, posInvalides.Add(i));
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int j = 0; j < posInvalides.Count; j++)
+                    }
+                }
+            }
         }
         #endregion
     }
