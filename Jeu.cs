@@ -25,6 +25,7 @@ namespace Projet_boogle
                 Console.Write("Quel est le nom du joueur " + i + " : ");
                 this.nomJoueurs[i-1] = Console.ReadLine();
             }
+            
             this.plateau = new Plateau(tailleJeu);
         }
         #endregion
@@ -42,7 +43,10 @@ namespace Projet_boogle
             Console.Write("Nombre de joueur.s souhaité.s : ");
             int nbJoueurs = int.Parse(Console.ReadLine());
             Jeu jeu = new Jeu(taillePlateau, nbJoueurs);
-            jeu.ToString();
+
+
+            Console.WriteLine(jeu.plateau.toString());
+            Console.Read();
         }
     }
 }
