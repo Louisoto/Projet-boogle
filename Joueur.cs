@@ -13,13 +13,11 @@ namespace Projet_boogle
         private string nom;
         private int score;
         private List<string>[] motsTrouvés;
-        private int nbToursPartie; //Nombre de tours dans la partie en cours 
         #endregion
 
         #region Constructeurs
         public Joueur(string nom, int nbToursPartie)
         {
-            this.nbToursPartie = nbToursPartie;
             this.nom = nom;
             this.score = 0;
             this.motsTrouvés = new List<string>[nbToursPartie];
