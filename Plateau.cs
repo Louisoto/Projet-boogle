@@ -13,6 +13,7 @@ namespace Projet_boogle
         private int taille;
         private De[,] plateau;
         #endregion
+
         #region Constructeurs
         public Plateau(int tailleJeu)
         {
@@ -27,19 +28,63 @@ namespace Projet_boogle
             }
         }
         #endregion
+
         #region Méthode
         public string toString()
         {
-            string resul = "";
+            
+
+            string message = "";
+            for (int i = 0; i < (2 * this.taille + 5); i++)
+            {
+                message += "_";
+            }
+            message += "\n|\\";
+            for (int i = 0; i < (2 * this.taille + 1); i++)
+            {
+                message += " ";
+            }
+            message += "/|\n";
+
+
             for (int i = 0; i < this.taille; i++)
             {
+                message += "| -";
                 for (int j = 0; j < this.taille; j++)
                 {
-                    resul += this.plateau[i,j].ToString();
+                    message += "--";
                 }
-                resul += "\n";
+                message += " |\n| |";
+                for (int j = 0; j < this.taille; j++)
+                {
+                    message +=  this.plateau[i, j].Face_visible;
+                    message += "|";
+                }
+                message += " |\n";
             }
-            return resul;
+            message += "| -";
+            for (int j = 0; j < this.taille; j++)
+            {
+                message += "--";
+            }
+            message += " |\n";
+
+
+            message += "|/";
+            for (int i = 0; i < (2 * this.taille + 1); i++)
+            {
+                message += " ";
+            }
+            message += "\\|\n";
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            for (int i = 0; i < (2 * this.taille + 5); i++)
+            {
+                message += '\u203E';
+            }
+            message += "\n";
+
+            return message;
         }
         public bool Test_Plateau(string mot, Position[] posInvalides = null, Position posCourante = null,int compteur = 0)
         {
