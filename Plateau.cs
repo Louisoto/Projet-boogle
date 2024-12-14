@@ -26,7 +26,6 @@ namespace Projet_boogle
         }
         #endregion
 
-
         #region Constructeurs
         public Plateau(int tailleJeu)
         {
