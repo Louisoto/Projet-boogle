@@ -14,6 +14,19 @@ namespace Projet_boogle
         private De[,] plateau;
         #endregion
 
+        #region Getters
+        public int Taille
+        {
+            get { return taille; }
+            set {
+                Plateau nouveauPlateau = new Plateau(value);
+                this.taille = nouveauPlateau.taille;
+                this.plateau = nouveauPlateau.plateau;
+            }
+        }
+        #endregion
+
+
         #region Constructeurs
         public Plateau(int tailleJeu)
         {

@@ -244,7 +244,7 @@ namespace Projet_boogle
         /// <summary>
         /// Fonction pour afficher le titre du jeu
         /// </summary>
-        public static void AffichageTitre()
+        public static string AffichageTitre()
         {
             // On place le titre dans une chaine avec @ pour ne pas que les retourns à la ligne et les \ posent un probleme
             string message = @"
@@ -271,7 +271,23 @@ namespace Projet_boogle
 
 ";
 
-            Console.WriteLine(message);
+            return message;
+        }
+
+        public static string AffichageFin()
+        {
+            string message = @"
+ __  __                    _           _                                                  _
+|  \/  |                  (_)         | |                                                (_)
+| \  / |  ___  _ __   ___  _      ___ | |_      __ _  _   _     _ __   ___ __   __  ___   _  _ __
+| |\/| | / _ \| '__| / __|| |    / _ \| __|    / _` || | | |   | '__| / _ \\ \ / / / _ \ | || '__|
+| |  | ||  __/| |   | (__ | |   |  __/| |_    | (_| || |_| |   | |   |  __/ \ V / | (_) || || |
+|_|  |_| \___||_|    \___||_|    \___| \__|    \__,_| \__,_|   |_|    \___|  \_/   \___/ |_||_|
+
+
+";
+            return message;
+
         }
     }
 }
