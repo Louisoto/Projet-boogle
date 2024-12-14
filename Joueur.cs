@@ -53,13 +53,20 @@ namespace Projet_boogle
         /// <param name="mot"></param>
         public void Add_Mot(string mot, int tourEnCours)
         {
-
+            this.motsTrouvés[tourEnCours].Add(mot);
         }
 
         public string toString()
         {
-            string resul = "";
-
+            string resul = "Le joueur " + this.nom + " a un score de " + this.score + ".\nLes mots trouvés sont : ";
+            for (int i = 0; i < this.motsTrouvés.Length; i++)
+            {
+                resul += "\nAu round " + i + " : ";
+                for (int j = 0; j < this.motsTrouvés[i].Count; j++)
+                {
+                    resul += this.motsTrouvés[j][i];
+                }
+            }
             return resul;
         }
         #endregion
