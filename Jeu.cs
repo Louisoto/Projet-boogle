@@ -24,7 +24,7 @@ namespace Projet_boogle
         #endregion
 
         #region Propriété
-        public int NbToursPartie() {  return this.nbToursPartie; }
+        public int NbToursPartie { get { return this.nbToursPartie; } }
         #endregion
 
         #region Constructeur
