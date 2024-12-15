@@ -9,7 +9,7 @@ namespace Projet_boogle
         private char[] faces;
         private char face_visible;
         private static char[] lettres;
-        private static int[] points_lettre;
+        private static int[] point_lettres;
         private static int[] probabilite_lettre;
         #endregion
 
@@ -17,9 +17,12 @@ namespace Projet_boogle
         public char[] Faces { 
             get { return faces; } 
         }   
-
         public char Face_visible {  
             get { return face_visible; }
+        }
+        public int[] Point_lettres
+        {
+            get { return point_lettres; }
         }
         #endregion
 
@@ -49,7 +52,7 @@ namespace Projet_boogle
         #region Méthode
         public static void initialisationValLettres()
         {
-            Program.lire_fichier_lettres(out lettres, out points_lettre, out probabilite_lettre, "Lettres.txt");
+            Program.lire_fichier_lettres(out lettres, out point_lettres, out probabilite_lettre, "Lettres.txt");
         }
 
         /// <summary>
