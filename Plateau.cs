@@ -30,10 +30,10 @@ namespace Projet_boogle
         public Plateau()
         {
             this.taille = 4;
-            this.plateau = new De[4, 4];
-            for (int i = 0; i < 4; i++)
+            this.plateau = new De[this.taille, this.taille];
+            for (int i = 0; i < this.taille; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < this.taille; j++)
                 {
                     plateau[i, j] = new De();
                 }

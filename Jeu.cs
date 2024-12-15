@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,19 @@ namespace Projet_boogle
         private int nbJoueurs;
         private Joueur[] joueurs;
         private int nbToursPartie;
+        private TimeSpan dureeTimer;
         #endregion
 
         #region Getters
         public int TaillePlateau
         {
             get { return plateau.Taille; }
+        }
+
+        public double DureeTimer
+        {
+            get { return dureeTimer.TotalSeconds; }
+            set { dureeTimer = TimeSpan.FromSeconds(value); } 
         }
         #endregion
 
