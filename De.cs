@@ -20,9 +20,9 @@ namespace Projet_boogle
         public char Face_visible {  
             get { return face_visible; }
         }
-        public int[] Point_lettres
+        public static int Point_lettre(int i)
         {
-            get { return point_lettres; }
+            return point_lettres[i];
         }
         #endregion
 

@@ -69,15 +69,27 @@ namespace Projet_boogle
             }
             return resul;
         }
-
-        public void Add_Score(string mot)
+        /// <summary>
+        /// Dans un premier temps cette fonction vérifie que un mot passé en paramètre appartient bien au dictionnaire et est bien sur le plateau.
+        /// Ensuite elle met à jour le score du joueur et ajoute le mot à la liste des mots trouvés par le joueur à ce tour.
+        /// Les paramètres en plus de mot permettent l'appel des fonction de test.
+        /// </summary>
+        /// <param name="mot"></param> Mot à tester
+        /// <param name="dico"></param> Langue du jeu en cours
+        /// <param name="tourEnCours"></param> Tour de la partie où le mot est entré
+        /// <param name="joueur"></param> Joueur ayant entré le mot
+        public void Add_Score(string mot, Dictionnaire dico, int tourEnCours, Joueur joueur)
         {
-            int ajout = 0;
-            for (int i = 0; i < mot.Length; i++)
+            if (dico.Dichotimie(mot) && !joueur.Contain(mot, tourEnCours))
             {
-
+                int ajout = 0;
+                for (int i = 0; i < mot.Length; i++)
+                {
+                    ajout += De.Point_lettre(mot[i] - 'a');
+                }
+                this.score += ajout * (mot.Length / 2);
+                joueur.Add_Mot(mot, tourEnCours);
             }
-            this.score += ajout;
         }
         #endregion
     }
