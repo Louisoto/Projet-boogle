@@ -10,15 +10,16 @@ namespace Projet_boogle
     internal class Jeu
     {
         #region Attributs
-        private int tourEnCours;
+        private bool jeuEnCours;
         private Plateau plateau;
         private int nbJoueurs;
         private Joueur[] joueurs;
         private int nbToursPartie;
         private TimeSpan dureeTimer;
+        private TimeSpan debutJeu;
         #endregion
 
-        #region Getters
+        #region Propriété
         public int TaillePlateau
         {
             get { return plateau.Taille; }
@@ -27,18 +28,19 @@ namespace Projet_boogle
         public double DureeTimer
         {
             get { return dureeTimer.TotalSeconds; }
-            set { dureeTimer = TimeSpan.FromSeconds(value); } 
+            set { dureeTimer = TimeSpan.FromSeconds(value); }
         }
-        #endregion
 
-        #region Propriété
-        public int NbToursPartie { get { return this.nbToursPartie; } }
+        public int NbToursPartie { 
+            get { return this.nbToursPartie; }
+            set { this.nbToursPartie = value;}
+        }
         #endregion
 
         #region Constructeur
         public Jeu(int tailleJeu, int nbJoueurs, int nbToursPartie)
         {
-            this.tourEnCours = 0;
+            this.jeuEnCours = false;
             this.nbToursPartie = nbToursPartie;
             this.nbJoueurs = nbJoueurs;
             this.joueurs = new Joueur[nbJoueurs];
@@ -50,9 +52,23 @@ namespace Projet_boogle
             this.plateau = new Plateau(tailleJeu);
         }
         #endregion
-        
+
+        #region Methodes
+        public void Commencer_partie()
+        {
+            jeuEnCours = true;
+            debutJeu = DateTime.Now;
+
+        }
+        public bool Verification_timer()
+        {
+            return true;
+        }
+        #endregion
         static void Main(string[] args)
         {
+            De.initialisationValLettres();
+
             //selection de la taille du plateau
             Console.Write("Sélectionner vos options : " +
                 "\nTaille du plateau : ");
@@ -97,7 +113,7 @@ namespace Projet_boogle
                         //affichage du nuage de mot
                         break;
                     case 4:
-                        Console.WriteLine("option actuelles:\nTaille plateau : " + jeu.TaillePlateau);
+                        Console.WriteLine("Option actuelles:\nTaille plateau : " + jeu.TaillePlateau);
                         break;
                     case 5:
                         Console.WriteLine(Program.AffichageFin());
