@@ -9,6 +9,9 @@ namespace Projet_boogle
 {
     internal class Program
     {
+        /// <summary>
+        /// Initialisation de la fonction random
+        /// </summary>
         public static Random random = new Random();
 
         /// <summary>
@@ -244,6 +247,7 @@ namespace Projet_boogle
         /// <summary>
         /// Fonction pour afficher le titre du jeu
         /// </summary>
+        /// /// <returns> renvoie un string avec le message </returns>
         public static string AffichageTitre()
         {
             // On place le titre dans une chaine avec @ pour ne pas que les retourns à la ligne et les \ posent un probleme
@@ -274,6 +278,10 @@ namespace Projet_boogle
             return message;
         }
 
+        /// <summary>
+        /// Fonction pour afficher le message de fin
+        /// </summary>
+        /// <returns> renvoie un string avec le message </returns>
         public static string AffichageFin()
         {
             string message = @"
