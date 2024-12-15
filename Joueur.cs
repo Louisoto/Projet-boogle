@@ -30,7 +30,7 @@ namespace Projet_boogle
 
         #region Méthodes
         /// <summary>
-        /// Fonction qui teste si le mot passé appartient déjà aux mots trouvés par le joueur pendant le tour en cours
+        /// Fonction qui teste si le mot passé en paramètre appartient déjà aux mots trouvés par le joueur pendant le tour en cours
         /// </summary>
         /// <param name="mot"></param>
         /// <returns></returns>
@@ -68,6 +68,16 @@ namespace Projet_boogle
                 }
             }
             return resul;
+        }
+
+        public void Add_Score(string mot)
+        {
+            int ajout = 0;
+            for (int i = 0; i < mot.Length; i++)
+            {
+
+            }
+            this.score += ajout;
         }
         #endregion
     }

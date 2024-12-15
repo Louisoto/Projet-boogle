@@ -8,6 +8,9 @@ namespace Projet_boogle
         #region Attributs
         private char[] faces;
         private char face_visible;
+        private static char[] lettres;
+        private static int[] points_lettre;
+        private static int[] probabilite_lettre;
         #endregion
 
         #region Getters
@@ -44,6 +47,10 @@ namespace Projet_boogle
         #endregion
 
         #region Méthode
+        public static void initialisationValLettres()
+        {
+            Program.lire_fichier_lettres(out lettres, out points_lettre, out probabilite_lettre, "Lettres.txt");
+        }
 
         /// <summary>
         /// Méthode pour modifier la face visible en tirant au hasard l'une des 6 faces du dé
