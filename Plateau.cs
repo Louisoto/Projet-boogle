@@ -160,6 +160,17 @@ namespace Projet_boogle
                 return false;
             }
         }
+
+        public void melanger()
+        {
+            for (int i = 0; i < taille; i++)
+            {
+                for (int j = 0; j < taille; j++)
+                {
+                    plateau[i, j].Lance(Program.random);
+                }
+            }
+        }
         #endregion
     }
 }

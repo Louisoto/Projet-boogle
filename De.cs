@@ -28,24 +28,19 @@ namespace Projet_boogle
 
         #region Constructeur
         public De() {
-            //on creer les tableau pour stocker les donner 
-            char[] lettres;
-            int[] points_lettre; //ici ça nous sert à rien, mais la fonction lire_fichier_lettres à été creer pour etre le plus general possible
-            int[] probabilite_lettre;
-
-            Program.lire_fichier_lettres(out lettres, out points_lettre, out probabilite_lettre, "Lettres.txt");
-
+            //Si on a oublié d'initialiser les valeur, alors on initialise en français (normallement pas besoin de le faire)
+            if (lettres == null || point_lettres == null || probabilite_lettre == null)
+            {
+                initialisationValLettres("francais");
+            }
 
             this.faces = new char[6];
-
             for (int i = 0; i < faces.Length; i++)//pour chaque face, on assigne une lettre aléatoirement en fonction des proba
             {
                 faces[i] = Program.Choisir_Lettre_Aleatoire(lettres, probabilite_lettre);
             }
 
             Lance(Program.random);// on utilise la methode lance pour assigner une face
-
-            
         }
         #endregion
 

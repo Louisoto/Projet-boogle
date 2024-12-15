@@ -79,8 +79,8 @@ namespace Projet_boogle
         {
             jeuEnCours = true;
             debutJeu = DateTime.Now;
-
         }
+
         public bool Verification_timer()
         {
             TimeSpan tempsEcoule = DateTime.Now - debutJeu;
@@ -92,6 +92,29 @@ namespace Projet_boogle
                 return false;
             }
             return true;
+        }
+
+        public void jouer()
+        {
+            for (int i = 0; i < nbToursPartie; i++)
+            {
+                for (int j = 0; j < nbJoueurs; j++)
+                {
+                    Commencer_partie();
+                    while (Verification_timer()) {
+                        Console.WriteLine(plateau.ToString());
+                        Console.WriteLine("Quel mot voyez-vous ?");
+                        string mot = Console.ReadLine();
+
+                        if (plateau.Test_Plateau(mot) /*|| recherche dicho du dictionaire*/)
+                        {
+                            joueurs[j].Contain(mot, i);
+                        }
+                    }
+                    plateau.melanger();
+                }
+
+            }
         }
         #endregion
 
