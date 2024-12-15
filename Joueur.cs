@@ -30,9 +30,12 @@ namespace Projet_boogle
 
         #region Méthodes
         /// <summary>
-        /// Fonction qui teste si le mot passé en paramètre appartient déjà aux mots trouvés par le joueur pendant le tour en cours
+        /// Cette méthode teste si le mot passé appartient déjà aux mots trouvés par le joueur pendant le tour en cours.
+        /// Si c'est le cas alors elle renvoie true et le mot n'est pas ajouté.
+        /// Sinon elle renvoie false et le mot est valable vis à vis de ce critère pour être ajouter aux mots trouvés.
         /// </summary>
-        /// <param name="mot"></param>
+        /// <param name="mot"></param> Mot à tester
+        /// <param name="tourEnCours"></param> Tour de la partie où il faut effectuer le test
         /// <returns></returns>
         public bool Contain(string mot, int tourEnCours)
         {
