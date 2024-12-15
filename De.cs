@@ -50,9 +50,9 @@ namespace Projet_boogle
         #endregion
 
         #region Méthode
-        public static void initialisationValLettres()
+        public static void initialisationValLettres(string langue)
         {
-            Program.lire_fichier_lettres(out lettres, out point_lettres, out probabilite_lettre, "Lettres.txt");
+            Program.lire_fichier_lettres(out lettres, out point_lettres, out probabilite_lettre, "Lettres" + langue + ".txt");
         }
 
         /// <summary>
