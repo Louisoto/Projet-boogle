@@ -80,7 +80,7 @@ namespace Projet_boogle
         /// <param name="joueur"></param> Joueur ayant entré le mot
         public void Add_Score(string mot, Dictionnaire dico, int tourEnCours, Joueur joueur)
         {
-            if (dico.Dichotimie(mot) && !joueur.Contain(mot, tourEnCours))
+            if (mot.Length > 2 && dico.Dichotimie(mot) && !joueur.Contain(mot, tourEnCours))
             {
                 int ajout = 0;
                 for (int i = 0; i < mot.Length; i++)
