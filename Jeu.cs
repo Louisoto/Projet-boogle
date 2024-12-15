@@ -16,7 +16,7 @@ namespace Projet_boogle
         private Joueur[] joueurs;
         private int nbToursPartie;
         private TimeSpan dureeTimer;
-        private TimeSpan debutJeu;
+        private DateTime debutJeu;
         #endregion
 
         #region Propriété
@@ -62,12 +62,25 @@ namespace Projet_boogle
         }
         public bool Verification_timer()
         {
+            TimeSpan tempsEcoule = DateTime.Now - debutJeu;
+            TimeSpan tempsRestant = dureeTimer - tempsEcoule;
+
+            if (tempsRestant <= TimeSpan.Zero)
+            {
+                jeuEnCours = false;
+                return false;
+            }
             return true;
         }
         #endregion
         static void Main(string[] args)
         {
             De.initialisationValLettres();
+
+            Program.AffichageTitre();
+            Thread.Sleep(3000);
+            Console.Clear();
+
 
             //selection de la taille du plateau
             Console.Write("Sélectionner vos options : " +
@@ -113,7 +126,19 @@ namespace Projet_boogle
                         //affichage du nuage de mot
                         break;
                     case 4:
-                        Console.WriteLine("Option actuelles:\nTaille plateau : " + jeu.TaillePlateau);
+                        Console.WriteLine("Option actuelles:\n1-Taille plateau : " + jeu.TaillePlateau);
+                        Console.WriteLine("2-Temps timer : ");
+                        Console.WriteLine("3-Nombre de tours : ");
+                        Console.WriteLine("4-Nombre de joueur : ");
+                        Console.WriteLine("5-Langue : ");
+                        Console.WriteLine("6-");
+                        choix_option = int.Parse(Console.ReadLine());
+                        switch (choix_option)
+                        {
+                            case 1:
+                                break;
+                        }
+
                         break;
                     case 5:
                         Console.WriteLine(Program.AffichageFin());
