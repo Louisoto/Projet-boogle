@@ -70,6 +70,7 @@ namespace Projet_boogle
             Jeu jeu = new Jeu(taillePlateau, nbJoueurs, nbToursPartie);
 
             int choix = 0;
+            int choix_option = 0;
             while (choix != 5)
             {
                 Console.WriteLine("Menu:\n1- Nouvelle partie\n2- Meilleurs scores\n3- Afficher le nuage de mots precedent\n4- Option\n5- Quitter le jeu\n\nQuel est votre choix ?");
