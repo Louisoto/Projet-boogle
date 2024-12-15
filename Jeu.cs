@@ -126,17 +126,25 @@ namespace Projet_boogle
                         //affichage du nuage de mot
                         break;
                     case 4:
-                        Console.WriteLine("Option actuelles:\n1-Taille plateau : " + jeu.TaillePlateau);
-                        Console.WriteLine("2-Temps timer : ");
-                        Console.WriteLine("3-Nombre de tours : ");
-                        Console.WriteLine("4-Nombre de joueur : ");
-                        Console.WriteLine("5-Langue : ");
-                        Console.WriteLine("6-");
-                        choix_option = int.Parse(Console.ReadLine());
-                        switch (choix_option)
+                        while (choix != 6)
                         {
-                            case 1:
-                                break;
+                            Console.WriteLine("Option actuelles:\n1-Taille plateau : " + jeu.TaillePlateau);
+                            Console.WriteLine("2-Temps timer : ");
+                            Console.WriteLine("3-Nombre de tours : ");
+                            Console.WriteLine("4-Nombre de joueur : ");
+                            Console.WriteLine("5-Langue : ");
+                            Console.WriteLine("6- Sortir");
+                            choix_option = int.Parse(Console.ReadLine());
+                            switch (choix_option)
+                            {
+                                case 1:
+                                    Console.WriteLine("Modification de la taille du plateau\nQuelle est la nouvelle taille ?");
+                                    int taille = int.Parse(Console.ReadLine());
+                                    jeu.plateau.Taille = taille;
+                                    break;
+                                default:
+                                    Console.WriteLine("Mauvaise manipulation");
+                            }
                         }
 
                         break;
