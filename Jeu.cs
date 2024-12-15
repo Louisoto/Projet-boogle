@@ -75,7 +75,7 @@ namespace Projet_boogle
         #endregion
         static void Main(string[] args)
         {
-            De.initialisationValLettres();
+            De.initialisationValLettres("francais");
 
             Program.AffichageTitre();
             Thread.Sleep(3000);
