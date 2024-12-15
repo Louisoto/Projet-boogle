@@ -142,8 +142,18 @@ namespace Projet_boogle
                                     int taille = int.Parse(Console.ReadLine());
                                     jeu.plateau.Taille = taille;
                                     break;
+                                case 2:
+                                    Console.WriteLine("Modification du timer\n Quelle est sa nouvelle durée (en secondes) ?");
+                                    int newtimer = int.Parse(Console.ReadLine());*
+
+                                    break;
+
+                                case 6:
+                                    Console.WriteLine("Sorrtie des options");
+                                    break;
                                 default:
                                     Console.WriteLine("Mauvaise manipulation");
+                                    break;
                             }
                         }
 
