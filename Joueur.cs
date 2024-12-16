@@ -93,7 +93,7 @@ namespace Projet_boogle
                 int ajout = 0;
                 for (int i = 0; i < mot.Length; i++)
                 {
-                    ajout += De.Point_lettre(mot[i] - 'a');
+                    ajout += De.Point_lettre(Convert.ToInt32(mot[i] - 'A'));
                 }
                 this.score += ajout * (mot.Length / 2);
                 this.Add_Mot(mot, tourEnCours);
