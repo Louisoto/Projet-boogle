@@ -135,7 +135,7 @@ namespace Projet_boogle
 
             //initialisation des options du jeu
             Jeu.dureeTimer_option = TimeSpan.FromSeconds(60);
-            Jeu.nbJoueurs_option = 1;
+            Jeu.nbJoueurs_option = 2;
             Jeu.nbTours_option = 2;
             Jeu.tailleplateau_option = 4;
             Jeu.langue_option = "francais";
