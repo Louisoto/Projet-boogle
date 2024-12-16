@@ -100,23 +100,15 @@ namespace Projet_boogle
         public void jouer()
         {
 
-            Console.WriteLine("penis 1");
             for (int i = 0; i < nbToursPartie; i++)
             {
-                
-                Console.WriteLine("penis 2");
                 for (int j = 0; j < nbJoueurs; j++)
                 {
-
-                    Console.WriteLine("penis 3");
                     Commencer_partie();
                     while (Verification_timer()) {
-
-                        Console.WriteLine("penis 4");
                         Console.WriteLine(plateau.toString());
                         Console.WriteLine("Quel mot voyez-vous ?");
                         string mot = Console.ReadLine();
-
                         if (plateau.Test_Plateau(mot))
                         {
                             joueurs[j].Add_Score(mot, dictionnaire, i);
