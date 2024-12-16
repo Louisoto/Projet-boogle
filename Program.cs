@@ -106,7 +106,7 @@ namespace Projet_boogle
             List<List<string>> dictionnaire = new List<List<string>>();
             try
             {
-                string contenu = File.ReadAllText("../../" + fichier);
+                string contenu = File.ReadAllText("../../" + fichier + ".txt");
                 string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
                 dictionnaire = tri_taille(mots);
 
