@@ -80,10 +80,9 @@ namespace Projet_boogle
         /// <param name="mot"></param> Mot à tester
         /// <param name="dico"></param> Langue du jeu en cours
         /// <param name="tourEnCours"></param> Tour de la partie où le mot est entré
-        /// <param name="joueur"></param> Joueur ayant entré le mot
-        public void Add_Score(string mot, Dictionnaire dico, int tourEnCours, Joueur joueur)
+        public void Add_Score(string mot, Dictionnaire dico, int tourEnCours)
         {
-            if (mot.Length > 2 && dico.Dichotimie(mot) && !joueur.Contain(mot, tourEnCours))
+            if (mot.Length >= 2 && dico.Dichotimie(mot) && !this.Contain(mot, tourEnCours))
             {
                 int ajout = 0;
                 for (int i = 0; i < mot.Length; i++)
@@ -91,7 +90,7 @@ namespace Projet_boogle
                     ajout += De.Point_lettre(mot[i] - 'a');
                 }
                 this.score += ajout * (mot.Length / 2);
-                joueur.Add_Mot(mot, tourEnCours);
+                this.Add_Mot(mot, tourEnCours);
             }
         }
         #endregion

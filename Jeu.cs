@@ -15,6 +15,7 @@ namespace Projet_boogle
         private int nbJoueurs;
         private Joueur[] joueurs;
         private int nbToursPartie;
+        private Dictionnaire dictionnaire;
         private TimeSpan dureeTimer;
         private DateTime debutJeu;
 
@@ -51,6 +52,7 @@ namespace Projet_boogle
             this.nbToursPartie = nbTours_option;
             this.nbJoueurs = nbJoueurs_option;
             this.joueurs = new Joueur[nbJoueurs];
+            this.dictionnaire = new Dictionnaire(langue_option);
             for (int i = 1; i <= nbJoueurs; i++)
             {
                 Console.Write("Quel est le nom du joueur " + i + " : ");
@@ -96,6 +98,7 @@ namespace Projet_boogle
 
         public void jouer()
         {
+
             for (int i = 0; i < nbToursPartie; i++)
             {
                 for (int j = 0; j < nbJoueurs; j++)
@@ -106,9 +109,9 @@ namespace Projet_boogle
                         Console.WriteLine("Quel mot voyez-vous ?");
                         string mot = Console.ReadLine();
 
-                        if (plateau.Test_Plateau(mot) /*|| recherche dicho du dictionaire*/)
+                        if (plateau.Test_Plateau(mot))
                         {
-                            joueurs[j].Contain(mot, i);
+                            joueurs[j].Add_Score(mot, dictionnaire, i);
                         }
                     }
                     plateau.melanger();
@@ -155,6 +158,8 @@ namespace Projet_boogle
                     case 1:
                         //ici on deroule le jeu. Il faudrait fait une methode de jeu ou c'est "derouler jeu" et ça gere les manches etc
                         Jeu jeu = new Jeu();
+
+
                         break;
                     case 2:
                         //on affiche les meilleurs scores
