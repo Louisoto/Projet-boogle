@@ -74,7 +74,7 @@ namespace Projet_boogle
 
         public bool Dichotimie(string mot)
         {
-            int taille_mot = mot.Length - 2;
+            int taille_mot = mot.Length;
             if (taille_mot >= 0 && taille_mot < mots.Count)
             {
                 int index = Program.Dichotomique(mots[taille_mot], mot, mots[taille_mot].Count - 1);

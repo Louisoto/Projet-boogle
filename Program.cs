@@ -109,7 +109,6 @@ namespace Projet_boogle
                 string contenu = File.ReadAllText("../../" + fichier + ".txt");
                 string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
                 dictionnaire = tri_taille(mots);
-
                 for (int i = 0; i < dictionnaire.Count; i++)
                 {
                     if (dictionnaire[i] != null)
@@ -117,6 +116,7 @@ namespace Projet_boogle
                         dictionnaire[i] = tri_fusion(dictionnaire[i]);
                     }
                 }
+                
             }
             catch (Exception ex) {
                 Console.WriteLine("Erreur lors de la lecture du fichier dictionnaire : " + ex.Message);
@@ -140,7 +140,7 @@ namespace Projet_boogle
             for (int i = 0; i < tableau.Length; i++)
             {
                 string mot = tableau[i];
-                int index = mot.Length - 2;//comme on considere qu'il n'y a pas de mot de taille 0 ou 1
+                int index = mot.Length;
                 while (index >= dictionnaire.Count)
                 {
                     dictionnaire.Add(new List<string>());

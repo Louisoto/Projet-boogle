@@ -89,7 +89,7 @@ namespace Projet_boogle
             TimeSpan tempsEcoule = DateTime.Now - debutJeu;
             TimeSpan tempsRestant = dureeTimer - tempsEcoule;
 
-            if (tempsRestant <= TimeSpan.Zero)
+            if (tempsRestant >= TimeSpan.Zero)
             {
                 jeuEnCours = false;
                 return false;
@@ -100,13 +100,20 @@ namespace Projet_boogle
         public void jouer()
         {
 
+            Console.WriteLine("penis 1");
             for (int i = 0; i < nbToursPartie; i++)
             {
+                
+                Console.WriteLine("penis 2");
                 for (int j = 0; j < nbJoueurs; j++)
                 {
+
+                    Console.WriteLine("penis 3");
                     Commencer_partie();
                     while (Verification_timer()) {
-                        Console.WriteLine(plateau.ToString());
+
+                        Console.WriteLine("penis 4");
+                        Console.WriteLine(plateau.toString());
                         Console.WriteLine("Quel mot voyez-vous ?");
                         string mot = Console.ReadLine();
 
@@ -130,7 +137,7 @@ namespace Projet_boogle
             De.initialisationValLettres("francais");
 
             Console.WriteLine (Program.AffichageTitre());
-            Thread.Sleep(3000);
+            Thread.Sleep(500);
             Console.Clear();
 
 
