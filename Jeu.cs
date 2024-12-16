@@ -124,6 +124,12 @@ namespace Projet_boogle
 
             }
         }
+        static int SaisieNombre()
+        {
+            int result;
+            while (!int.TryParse(Console.ReadLine(), out result)) { }
+            return result;
+        }
         #endregion
 
 
@@ -158,7 +164,7 @@ namespace Projet_boogle
                     "4- Option\n" +
                     "5- Quitter le jeu\n\n" +
                     "Quel est votre choix ?");
-                choix = int.Parse(Console.ReadLine());
+                choix = SaisieNombre();
                 Console.Clear();
 
                 switch (choix)
