@@ -124,7 +124,7 @@ namespace Projet_boogle
                     posInvalides = new Position[mot.Length];
                     for (int i = 0; i < this.plateau.GetLength(0); i++)
                     {
-                        for (int j = 0; i < this.plateau.GetLength(1); j++)
+                        for (int j = 0; j < this.plateau.GetLength(1); j++)
                         {
                             if (this.plateau[i,j].Face_visible == mot[0])
                             {
