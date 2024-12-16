@@ -77,6 +77,7 @@ namespace Projet_boogle
         #endregion
 
         #region Methodes
+        
         public void Commencer_partie()
         {
             jeuEnCours = true;
