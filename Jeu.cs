@@ -25,6 +25,9 @@ namespace Projet_boogle
         private static int nbTours_option;
         private static int tailleplateau_option;
         private static string langue_option;
+
+        private static int[] meilleursScores;
+        private static string[] nomJoueurMeilleursScores;
         #endregion
 
         #region Propriété
@@ -142,6 +145,9 @@ namespace Projet_boogle
             Jeu.tailleplateau_option = 4;
             Jeu.langue_option = "francais";
 
+            Jeu.meilleursScores = new int[20];
+            Jeu.nomJoueurMeilleursScores = new string[20];
+
             int choix = 0;
             while (choix != 5)
             {
@@ -165,6 +171,18 @@ namespace Projet_boogle
                         break;
                     case 2:
                         //on affiche les meilleurs scores
+                        for (int i = 0; i < Jeu.meilleursScores.Length; i++)
+                        {
+                            if (Jeu.meilleursScores[i] != 0)
+                            {
+                                Console.WriteLine("Le " + i + "ème meilleur score est de " + Jeu.meilleursScores[i] + 
+                                                  " réalisé par " + Jeu.nomJoueurMeilleursScores[i]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Aucun score enregistré");
+                            }
+                        }
                         break;
                     case 3:
                         //affichage du nuage de mot
