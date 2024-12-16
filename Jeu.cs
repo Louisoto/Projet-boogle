@@ -106,14 +106,16 @@ namespace Projet_boogle
                 {
                     Commencer_partie();
                     while (Verification_timer()) {
+                        Console.WriteLine("C'est au tour de " + joueurs[j].Nom + ", son score est de " + joueurs[j].Score);
                         Console.WriteLine(plateau.toString());
                         Console.WriteLine("Quel mot voyez-vous ?");
-                        string mot = Console.ReadLine();
+                        string mot = Console.ReadLine().ToUpper();
                         if (plateau.Test_Plateau(mot))
                         {
                             joueurs[j].Add_Score(mot, dictionnaire, i);
                         }
                     }
+                    joueurs[j].toString();
                     plateau.melanger();
                 }
 

@@ -15,6 +15,12 @@ namespace Projet_boogle
         private List<string>[] motsTrouvés;
         #endregion
 
+        #region Propriétés
+        public int Score { get { return this.score; } }
+        public string Nom {  get { return this.nom; } }
+        public List<string>[] MotsTrouvés { get { return this.motsTrouvés;} }
+        #endregion
+
         #region Constructeurs
         public Joueur(string nom, int nbToursPartie)
         {
