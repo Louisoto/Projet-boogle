@@ -158,7 +158,7 @@ namespace Projet_boogle
                     case 1:
                         //ici on deroule le jeu. Il faudrait fait une methode de jeu ou c'est "derouler jeu" et ça gere les manches etc
                         Jeu jeu = new Jeu();
-
+                        jeu.jouer();
 
                         break;
                     case 2:
