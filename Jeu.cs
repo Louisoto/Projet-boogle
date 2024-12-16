@@ -204,7 +204,7 @@ namespace Projet_boogle
                                 "\n5-Langue : " + Jeu.langue_option +
                                 "\n6-Sortir" +
                                 "\nQue souhaitez-vous modifier ?");
-                            choix_option = int.Parse(Console.ReadLine());
+                            choix_option = SaisieNombre();
                             Console.Clear();
                             switch (choix_option)
                             {
