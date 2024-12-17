@@ -28,10 +28,5 @@ namespace Projet_boogle
         public int X { get { return x; } }
         public int Y { get { return y; } }
         #endregion
-
-        public void toString()
-        {
-            Console.WriteLine(this.x + " ; " +  this.y);
-        }
     }
 }
