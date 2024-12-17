@@ -54,28 +54,15 @@ namespace Projet_boogle
             this.jeuEnCours = false;
             this.nbToursPartie = nbTours_option;
             this.nbJoueurs = nbJoueurs_option;
-            this.joueurs = new Joueur[nbJoueurs];
+            this.dureeTimer = dureeTimer_option;
             this.dictionnaire = new Dictionnaire(langue_option);
+            this.joueurs = new Joueur[nbJoueurs];
             for (int i = 1; i <= nbJoueurs; i++)
             {
                 Console.Write("Quel est le nom du joueur " + i + " : ");
                 this.joueurs[i - 1] = new Joueur(Console.ReadLine(), nbToursPartie);
             }
             this.plateau = new Plateau(tailleplateau_option);
-        }
-
-        public Jeu(int tailleJeu, int nbJoueurs, int nbToursPartie)
-        {
-            this.jeuEnCours = false;
-            this.nbToursPartie = nbToursPartie;
-            this.nbJoueurs = nbJoueurs;
-            this.joueurs = new Joueur[nbJoueurs];
-            for (int i = 1; i <= nbJoueurs; i++)
-            {
-                Console.Write("Quel est le nom du joueur " + i + " : ");
-                this.joueurs[i-1] = new Joueur(Console.ReadLine(), nbToursPartie);
-            }
-            this.plateau = new Plateau(tailleJeu);
         }
         #endregion
 
@@ -91,8 +78,8 @@ namespace Projet_boogle
         {
             TimeSpan tempsEcoule = DateTime.Now - debutJeu;
             TimeSpan tempsRestant = dureeTimer - tempsEcoule;
-
-            if (tempsRestant >= TimeSpan.Zero)
+            Console.WriteLine("Il vous reste " + tempsRestant.ToString());
+            if (tempsRestant <= TimeSpan.Zero)
             {
                 jeuEnCours = false;
                 return false;
@@ -118,10 +105,9 @@ namespace Projet_boogle
                             joueurs[j].Add_Score(mot, dictionnaire, i);
                         }
                     }
-                    joueurs[j].toString();
+                    Console.WriteLine(joueurs[j].toString());
                     plateau.melanger();
                 }
-
             }
         }
         static int SaisieNombre()
