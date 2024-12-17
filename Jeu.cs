@@ -41,15 +41,15 @@ namespace Projet_boogle
             set { dureeTimer = TimeSpan.FromSeconds(value); }
         }
 
-        public int NbToursPartie { 
+        public int NbToursPartie {
             get { return this.nbToursPartie; }
-            set { this.nbToursPartie = value;}
+            set { this.nbToursPartie = value; }
         }
 
         public static TimeSpan DureeTimer_option
         {
-            get { return dureeTimer_option;  }
-            set { dureeTimer_option = value;  }
+            get { return dureeTimer_option; }
+            set { dureeTimer_option = value; }
         }
 
         public static int NbJoueurs_option
@@ -137,7 +137,7 @@ namespace Projet_boogle
                     while (Verification_timer()) {
                         Console.WriteLine("C'est au tour de " + joueurs[j].Nom + " de jouer.\n"
                                           + "Il reste " + tempsRestant().Minutes + " minute(s) et " + tempsRestant().Seconds + " secondes au tour.\n"
-                                          + plateau.toString() 
+                                          + plateau.toString()
                                           + "\nQuel mot voyez-vous ?");
                         string mot = Console.ReadLine().ToUpper();
                         if (plateau.Test_Plateau(mot))
@@ -151,47 +151,65 @@ namespace Projet_boogle
             }
         }
 
-        public string rechercheMotIA(string mot = "")
+        public string rechercheMotIA(string chaineCaractères = "", Position[] posInvalides = null, Position posCourante = null, int compteur = 0)
         {
-            if (mot == "")
+            if (dictionnaire.Dichotomie(chaineCaractères))
             {
-                for (int i = 0; i < this.plateau.Taille; i++)
+                return chaineCaractères;
+            }
+            else
+            {
+                if (posCourante == null)
                 {
-                    for (int j = 0; j < this.plateau.Taille; j++)
+                    posInvalides = new Position[this.TaillePlateau * this.TaillePlateau];
+                    for (int i = 0; i < this.TaillePlateau; i++)
                     {
-                        mot += this.plateau.elemPlateau(i, j);
-                        for (int k = -1; k <= 1; k++)
+                        for (int j = 0; j < this.TaillePlateau; j++)
                         {
-                            for (int l = -1; l <= 1; l++)
+                            Position posTesté = new Position(i, j);
+                            chaineCaractères += this.plateau.elemPlateau(i, j);
+                            Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
+                            posInvalides.CopyTo(nouvelleListeInvalides, 0);
+                            nouvelleListeInvalides[compteur] = posTesté;
+                            rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTesté, compteur + 1);
+                        }
+                    }
+                }
+                else
+                {
+                    if (this.dictionnaire.Existence(chaineCaractères))
+                    {
+                        for (int i = -1; i <= 1; i++)
+                        {
+                            for (int j = -1; j <= 1; j++)
                             {
-                                mot += this.plateau.elemPlateau(i + k, j + l);
-                                if (this.dictionnaire.Existence(mot))
+
+                                bool test = false;
+                                Position posTesté = new Position(posCourante.X + i, posCourante.Y + j);
+                                for (int k = 0; k < posInvalides.Length && !test; k++)
                                 {
-                                    return rechercheMotIA(mot);
+                                    if (posInvalides[k] != null && posTesté.X == posInvalides[k].X && posTesté.Y == posInvalides[k].Y)
+                                    {
+                                        test = true;
+                                    }
+                                }
+                                if (!test &&
+                                    posTesté.X >= 0 && posTesté.X < this.TaillePlateau &&
+                                    posTesté.Y >= 0 && posTesté.Y < this.TaillePlateau)
+                                {
+                                    chaineCaractères += this.plateau.elemPlateau(posTesté.X, posTesté.Y);
+                                    Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
+                                    posInvalides.CopyTo(nouvelleListeInvalides, 0);
+                                    nouvelleListeInvalides[compteur] = posTesté;
+                                    rechercheMotIA(chaineCaractères.Substring(1), nouvelleListeInvalides, posTesté, compteur + 1);
                                 }
                             }
                         }
                     }
                 }
-            }
-            else
-            {
-                for (int k = -1; k <= 1; k++)
-                {
-                    for (int l = -1; l <= 1; l++)
-                    {
-                        mot += this.plateau.elemPlateau(k, l);
-                        if (this.dictionnaire.Existence(mot))
-                        {
-                            return rechercheMotIA(mot);
-                        }
-                    }
-                }
+                return "Tous les mots sur ce plateau sont trouvés";
             }
         }
         #endregion
-
-
-
     }
 }

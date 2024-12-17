@@ -243,12 +243,7 @@ namespace Projet_boogle
 
         public bool Existence(string chaineCaractères)
         {
-            bool testExistence = false;
-            if(Dichotomie(chaineCaractères))
-            {
-                testExistence = true;
-            }
-            return testExistence;
+            return false;
         }
         #endregion
     }
