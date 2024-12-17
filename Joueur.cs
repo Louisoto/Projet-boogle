@@ -68,12 +68,12 @@ namespace Projet_boogle
         /// Cette méthode retourne une chaine de caractère décrivant un joueur
         /// </summary>
         /// <returns></returns>
-        public string toString()
+        public string toString(int tourEnCours)
         {
             string resul = "Le joueur " + this.nom + " a un score de " + this.score + ".\nLes mots trouvés sont : ";
-            for (int i = 0; i < this.motsTrouvés.Length; i++)
+            for (int i = 0; i <= tourEnCours; i++)
             {
-                resul += "\nAu round " + i + " : ";
+                resul += "\nAu round " + (i+1) + " : ";
                 for (int j = 0; j < this.motsTrouvés[i].Count; j++)
                 {
                     resul += this.motsTrouvés[i][j];

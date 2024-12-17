@@ -105,7 +105,7 @@ namespace Projet_boogle
                             joueurs[j].Add_Score(mot, dictionnaire, i);
                         }
                     }
-                    Console.WriteLine(joueurs[j].toString());
+                    Console.WriteLine(joueurs[j].toString(i));
                     plateau.melanger();
                 }
             }
