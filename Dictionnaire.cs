@@ -12,6 +12,7 @@ namespace Projet_boogle
         #region Attributs
         private string langue;// anglais ou français
         private List<List<string>> mots;
+        private List<string> motsOrdreAlpha;
         #endregion
 
         #region Getters
@@ -24,12 +25,17 @@ namespace Projet_boogle
         {
             get { return mots; }
         }
+        public List<string> MotsOrdreAlpha
+        {
+            get { return motsOrdreAlpha; }
+        }
         #endregion
 
         #region Constructeur
         public Dictionnaire(string langue) { 
             this.langue = langue;
             this.mots = Recuperer_Dictionnaire(langue);
+            this.motsOrdreAlpha = 
         }
         #endregion
 
@@ -98,6 +104,30 @@ namespace Projet_boogle
         /// <param name="fichier"></param>
         /// <returns> Liste de liste de string trié </returns>
         public static List<List<string>> Recuperer_Dictionnaire(string fichier)
+        {
+            List<List<string>> dictionnaire = new List<List<string>>();
+            try
+            {
+                string contenu = File.ReadAllText("../../" + fichier + ".txt");
+                string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
+                dictionnaire = tri_taille(mots);
+                for (int i = 0; i < dictionnaire.Count; i++)
+                {
+                    if (dictionnaire[i] != null)
+                    {
+                        dictionnaire[i] = tri_fusion(dictionnaire[i]);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur lors de la lecture du fichier dictionnaire : " + ex.Message);
+            }
+            return dictionnaire;
+        }
+
+        public static List<List<string>> Recuperer_Dictionnaire_Alpha(string fichier)
         {
             List<List<string>> dictionnaire = new List<List<string>>();
             try
