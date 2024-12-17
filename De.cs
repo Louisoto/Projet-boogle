@@ -37,7 +37,7 @@ namespace Projet_boogle
             this.faces = new char[6];
             for (int i = 0; i < faces.Length; i++)//pour chaque face, on assigne une lettre aléatoirement en fonction des proba
             {
-                faces[i] = Program.Choisir_Lettre_Aleatoire(lettres, probabilite_lettre);
+                faces[i] = Choisir_Lettre_Aleatoire(lettres, probabilite_lettre);
             }
 
             Lance(Program.random);// on utilise la methode lance pour assigner une face
@@ -51,7 +51,7 @@ namespace Projet_boogle
         /// <param name="langue"></param> Ce paramètre donne la langue du jeu en cours afin de récupérer le bon fichier
         public static void initialisationValLettres(string langue)
         {
-            Program.lire_fichier_lettres(out lettres, out point_lettres, out probabilite_lettre, "Lettres" + langue + ".txt");
+            lire_fichier_lettres(out lettres, out point_lettres, out probabilite_lettre, "Lettres" + langue + ".txt");
         }
 
         /// <summary>
@@ -77,6 +77,81 @@ namespace Projet_boogle
             r += "\nFace visible: " + face_visible;
             return r;
         }
+
+        /// <summary>
+        /// Fonction pour choisir une lettre aleatoirement en fonction du pourcentage qu'a chaque lettre d'apparaittre
+        ///
+        /// Explication:
+        /// Le fonctionnement n'est pas intuitif mais comme il n'y a pas de moyen d'utiliser la fonction random pour des pourcentages d'apparaitre.
+        /// On utilise donc un systeme qui va, a chaque iteration, on ajoute le purcentage dans une somme. Si le nombre aléatoire tiré au debut
+        /// est passé (inferieur ou egale) alors c'est la bonne lettre, sinon on test la lettre suivante
+        /// </summary>
+        /// <param name="lettres"></param>
+        /// <param name="probabilite_lettre"></param>
+        /// <returns></returns>
+        public static char Choisir_Lettre_Aleatoire(char[] lettres, int[] probabilite_lettre)
+        {
+            int tirage = Program.random.Next(1, 101); // Nombre aléatoire entre 1 et 100
+            int somme = 0;
+
+            //pour chaque iteration, on ajoute le "pourcentage", et dès que ça correspond au nombre aléatoire alors on prend la lettre qui correspond
+            for (int i = 0; i < lettres.Length; i++)
+            {
+                somme += probabilite_lettre[i];
+                if (tirage <= somme)
+                {
+                    return lettres[i];
+                }
+            }
+
+            // Retour par défaut au cas ou (normallement ça sert à rien mais bon on sait jamais)
+            return lettres[lettres.Length - 1];
+        }
+
+        /// <summary>
+        /// Fonction pour lire les informations du fichier lettre, puis tri chaque colone et place des informations dans 
+        /// trois tableaux differents: les lettres, les points et la probabilité d'apparaitre.
+        /// On utilise un try catch pour eviter que ça plante si on ne trouve pas le fichier
+        /// </summary>
+        /// <param name="lettres"></param>
+        /// <param name="points_lettre"></param>
+        /// <param name="probabilite_lettre"></param>
+        /// <param name="fichier"></param>
+        public static void lire_fichier_lettres(out char[] lettres, out int[] points_lettre, out int[] probabilite_lettre, string fichier)
+        {
+            try
+            {
+                // Lecture des lignes du fichier
+                string[] lignes_fichier = File.ReadAllLines("../../" + fichier);
+
+                // initiqlisation des tableaux
+                lettres = new char[lignes_fichier.Length];
+                points_lettre = new int[lignes_fichier.Length];
+                probabilite_lettre = new int[lignes_fichier.Length];
+
+                for (int i = 0; i < lignes_fichier.Length; i++)
+                {
+                    // Découper la ligne en trois parties, chaqu'une separée par ;
+                    string[] parties = lignes_fichier[i].Split(';');
+
+                    // Stocker chaque valeur dans le tableau correspondant
+                    lettres[i] = char.Parse(parties[0]);          // lettres
+                    points_lettre[i] = int.Parse(parties[1]);     // points pas lettres
+                    probabilite_lettre[i] = int.Parse(parties[2]); // probabilité de chasue lettre
+                }
+            }
+
+            catch (Exception ex)
+            {
+                lettres = null;
+                points_lettre = null;
+                probabilite_lettre = null;
+
+                Console.WriteLine("Erreur lors de la lecture du fichier lettres : " + ex.Message);
+
+            }
+        }
+
         #endregion 
     }
 
