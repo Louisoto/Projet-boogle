@@ -198,10 +198,13 @@ namespace Projet_boogle
                                     posTesté.Y >= 0 && posTesté.Y < this.TaillePlateau)
                                 {
                                     chaineCaractères += this.plateau.elemPlateau(posTesté.X, posTesté.Y);
-                                    Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
-                                    posInvalides.CopyTo(nouvelleListeInvalides, 0);
-                                    nouvelleListeInvalides[compteur] = posTesté;
-                                    rechercheMotIA(chaineCaractères.Substring(1), nouvelleListeInvalides, posTesté, compteur + 1);
+                                    if (this.dictionnaire.Existence(chaineCaractères))
+                                    {
+                                        Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
+                                        posInvalides.CopyTo(nouvelleListeInvalides, 0);
+                                        nouvelleListeInvalides[compteur] = posTesté;
+                                        rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTesté, compteur + 1);
+                                    }
                                 }
                             }
                         }
