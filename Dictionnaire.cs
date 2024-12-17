@@ -269,7 +269,11 @@ namespace Projet_boogle
 
         public bool Existence(string chaineCaractères)
         {
-            return false;
+            if (Dichotomique(this.motsOrdreAlpha, chaineCaractères, motsOrdreAlpha.Count) == -1)
+            {
+                return false;
+            }
+            return true;
         }
         #endregion
     }

@@ -59,9 +59,11 @@ namespace Projet_boogle
                             else
                             {
                                 Console.WriteLine("Aucun score enregistré");
-                            }
-                            Console.WriteLine();
+                            }                            
                         }
+                        Console.WriteLine("\nAppuyez sur une touche pour quitter");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
                     case 3:
                         //affichage du nuage de mot
