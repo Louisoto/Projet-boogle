@@ -10,14 +10,13 @@ namespace Projet_boogle
     internal class Jeu
     {
         #region Attributs
-        private bool jeuEnCours;
         private Plateau plateau;
         private int nbJoueurs;
         private Joueur[] joueurs;
         private int nbToursPartie;
         private Dictionnaire dictionnaire;
         private TimeSpan dureeTimer;
-        private DateTime debutJeu;
+        private DateTime debutTour;
 
         //attributs statiques permettant de stocker les options
         private static TimeSpan dureeTimer_option;
@@ -51,7 +50,6 @@ namespace Projet_boogle
         #region Constructeur
         public Jeu()
         {
-            this.jeuEnCours = false;
             this.nbToursPartie = nbTours_option;
             this.nbJoueurs = nbJoueurs_option;
             this.dureeTimer = dureeTimer_option;
@@ -67,21 +65,18 @@ namespace Projet_boogle
         #endregion
 
         #region Methodes
-        
-        public void Commencer_partie()
+        public void Commencer_tour()
         {
-            jeuEnCours = true;
-            debutJeu = DateTime.Now;
+            debutTour = DateTime.Now;
         }
 
         public bool Verification_timer()
         {
-            TimeSpan tempsEcoule = DateTime.Now - debutJeu;
+            TimeSpan tempsEcoule = DateTime.Now - debutTour;
             TimeSpan tempsRestant = dureeTimer - tempsEcoule;
             Console.WriteLine("Il vous reste " + tempsRestant.ToString());
             if (tempsRestant <= TimeSpan.Zero)
             {
-                jeuEnCours = false;
                 return false;
             }
             return true;
@@ -94,7 +89,7 @@ namespace Projet_boogle
             {
                 for (int j = 0; j < nbJoueurs; j++)
                 {
-                    Commencer_partie();
+                    Commencer_tour();
                     while (Verification_timer()) {
                         Console.WriteLine("C'est au tour de " + joueurs[j].Nom + ", son score est de " + joueurs[j].Score);
                         Console.WriteLine(plateau.toString());
@@ -110,7 +105,7 @@ namespace Projet_boogle
                 }
             }
         }
-        static int SaisieNombre()
+        static int SaisieNombreSecur()
         {
             int result = 0;
             while (!int.TryParse(Console.ReadLine(), out result) || result <= 0) { }
@@ -150,7 +145,7 @@ namespace Projet_boogle
                     "4- Option\n" +
                     "5- Quitter le jeu\n\n" +
                     "Quel est votre choix ?");
-                choix = SaisieNombre();
+                choix = SaisieNombreSecur();
                 Console.Clear();
 
                 switch (choix)
@@ -190,28 +185,28 @@ namespace Projet_boogle
                                 "\n5-Langue : " + Jeu.langue_option +
                                 "\n6-Sortir" +
                                 "\nQue souhaitez-vous modifier ?");
-                            choix_option = SaisieNombre();
+                            choix_option = SaisieNombreSecur();
                             Console.Clear();
                             switch (choix_option)
                             {
                                 case 1:
                                     Console.WriteLine("Modification de la taille du plateau\nQuelle est la nouvelle taille ?");
-                                    Jeu.tailleplateau_option = SaisieNombre();
+                                    Jeu.tailleplateau_option = SaisieNombreSecur();
                                     Console.Clear();
                                     break;
                                 case 2:
                                     Console.WriteLine("Modification du timer\nQuelle est sa nouvelle durée (en secondes) ?");
-                                    Jeu.dureeTimer_option = TimeSpan.FromSeconds(SaisieNombre());
+                                    Jeu.dureeTimer_option = TimeSpan.FromSeconds(SaisieNombreSecur());
                                     Console.Clear();
                                     break;
                                 case 3:
                                     Console.WriteLine("Modification du nombre de tour\nCombien de tours souhaitez-vous ?");
-                                    Jeu.nbTours_option = SaisieNombre();
+                                    Jeu.nbTours_option = SaisieNombreSecur();
                                     Console.Clear();
                                     break;
                                 case 4:
                                     Console.WriteLine("Modification du nombre de joueur\nCombien de joueurs souhaitez-vous ?");
-                                    Jeu.nbJoueurs_option = SaisieNombre();
+                                    Jeu.nbJoueurs_option = SaisieNombreSecur();
                                     Console.Clear();
                                     break;
                                 case 5:
