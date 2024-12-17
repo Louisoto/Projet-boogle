@@ -47,6 +47,7 @@
     <Compile Include="Joueur.cs" />
     <Compile Include="De.cs" />
     <Compile Include="Jeu.cs" />
+    <Compile Include="main.cs" />
     <Compile Include="Plateau.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />

@@ -14,6 +14,13 @@ namespace Projet_boogle
         /// </summary>
         public static Random random = new Random();
 
+        public static int SaisieNombreSecur()
+        {
+            int result = 0;
+            while (!int.TryParse(Console.ReadLine(), out result) || result <= 0) { }
+            return result;
+        }
+
         /// <summary>
         /// Fonction pour afficher le titre du jeu
         /// </summary>
