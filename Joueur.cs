@@ -64,6 +64,7 @@ namespace Projet_boogle
         {
             this.motsTrouvés[tourEnCours].Add(mot);
         }
+
         /// <summary>
         /// Cette méthode retourne une chaine de caractère décrivant un joueur
         /// </summary>
@@ -82,6 +83,7 @@ namespace Projet_boogle
             }
             return resul;
         }
+
         /// <summary>
         /// Dans un premier temps cette fonction vérifie que un mot passé en paramètre appartient bien au dictionnaire et est bien sur le plateau.
         /// Ensuite elle met à jour le score du joueur et ajoute le mot à la liste des mots trouvés par le joueur à ce tour.
