@@ -13,7 +13,7 @@ namespace Projet_boogle
         private static int[] probabilite_lettre;
         #endregion
 
-        #region Getters
+        #region Propriétés
         public char[] Faces { 
             get { return faces; } 
         }   
@@ -45,6 +45,10 @@ namespace Projet_boogle
         #endregion
 
         #region Méthode
+        /// <summary>
+        /// Cette méthode initialise les variable static de la classe en fonction de la langue de jeu sélectionné en option
+        /// </summary>
+        /// <param name="langue"></param> Ce paramètre donne la langue du jeu en cours afin de récupérer le bon fichier
         public static void initialisationValLettres(string langue)
         {
             Program.lire_fichier_lettres(out lettres, out point_lettres, out probabilite_lettre, "Lettres" + langue + ".txt");
@@ -67,12 +71,9 @@ namespace Projet_boogle
         public override string ToString()
         {
             string r = "Faces du dé: ";
-
-            //on donne les 6 faces du dé
             for (int i = 0; i< faces.Length; i++) {
                 r += faces[i] + ", ";
             }
-            //et on donne la face visible
             r += "\nFace visible: " + face_visible;
             return r;
         }
