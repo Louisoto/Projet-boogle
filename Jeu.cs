@@ -70,12 +70,14 @@ namespace Projet_boogle
             debutTour = DateTime.Now;
         }
 
+        public TimeSpan tempsRestant()
+        {
+            return (this.dureeTimer - (DateTime.Now - this.debutTour));
+        }
+
         public bool Verification_timer()
         {
-            TimeSpan tempsEcoule = DateTime.Now - debutTour;
-            TimeSpan tempsRestant = dureeTimer - tempsEcoule;
-            Console.WriteLine("Il vous reste " + tempsRestant.ToString());
-            if (tempsRestant <= TimeSpan.Zero)
+            if (tempsRestant() <= TimeSpan.Zero)
             {
                 return false;
             }
@@ -91,9 +93,10 @@ namespace Projet_boogle
                 {
                     Commencer_tour();
                     while (Verification_timer()) {
-                        Console.WriteLine("C'est au tour de " + joueurs[j].Nom + ", son score est de " + joueurs[j].Score);
-                        Console.WriteLine(plateau.toString());
-                        Console.WriteLine("Quel mot voyez-vous ?");
+                        Console.WriteLine("C'est au tour de " + joueurs[j].Nom + " de jouer.\n"
+                                          + "Il reste " + tempsRestant().Minutes + " minute(s) et " + tempsRestant().Seconds + " secondes au tour.\n"
+                                          + plateau.toString() 
+                                          + "\nQuel mot voyez-vous ?");
                         string mot = Console.ReadLine().ToUpper();
                         if (plateau.Test_Plateau(mot))
                         {
@@ -114,8 +117,6 @@ namespace Projet_boogle
         #endregion
 
 
-
-
         static void Main(string[] args)
         {
             De.initialisationValLettres("francais");
@@ -123,7 +124,6 @@ namespace Projet_boogle
             Console.WriteLine (Program.AffichageTitre());
             Thread.Sleep(500);
             Console.Clear();
-
 
             //initialisation des options du jeu
             Jeu.dureeTimer_option = TimeSpan.FromSeconds(60);
