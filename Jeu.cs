@@ -126,8 +126,8 @@ namespace Projet_boogle
         }
         static int SaisieNombre()
         {
-            int result;
-            while (!int.TryParse(Console.ReadLine(), out result)) { }
+            int result = 0;
+            while (!int.TryParse(Console.ReadLine(), out result) || result <= 0) { }
             return result;
         }
         #endregion
@@ -187,6 +187,7 @@ namespace Projet_boogle
                             {
                                 Console.WriteLine("Aucun score enregistré");
                             }
+                            Console.WriteLine();
                         }
                         break;
                     case 3:
@@ -209,22 +210,22 @@ namespace Projet_boogle
                             {
                                 case 1:
                                     Console.WriteLine("Modification de la taille du plateau\nQuelle est la nouvelle taille ?");
-                                    Jeu.tailleplateau_option = int.Parse(Console.ReadLine());
+                                    Jeu.tailleplateau_option = SaisieNombre();
                                     Console.Clear();
                                     break;
                                 case 2:
                                     Console.WriteLine("Modification du timer\nQuelle est sa nouvelle durée (en secondes) ?");
-                                    Jeu.dureeTimer_option = TimeSpan.FromSeconds(int.Parse(Console.ReadLine()));
+                                    Jeu.dureeTimer_option = TimeSpan.FromSeconds(SaisieNombre());
                                     Console.Clear();
                                     break;
                                 case 3:
                                     Console.WriteLine("Modification du nombre de tour\nCombien de tours souhaitez-vous ?");
-                                    Jeu.nbTours_option = int.Parse(Console.ReadLine());
+                                    Jeu.nbTours_option = SaisieNombre();
                                     Console.Clear();
                                     break;
                                 case 4:
                                     Console.WriteLine("Modification du nombre de joueur\nCombien de joueurs souhaitez-vous ?");
-                                    Jeu.nbJoueurs_option = int.Parse(Console.ReadLine());
+                                    Jeu.nbJoueurs_option = SaisieNombre();
                                     Console.Clear();
                                     break;
                                 case 5:
