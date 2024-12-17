@@ -173,7 +173,6 @@ namespace Projet_boogle
                         //ici on deroule le jeu. Il faudrait fait une methode de jeu ou c'est "derouler jeu" et ça gere les manches etc
                         Jeu jeu = new Jeu();
                         jeu.jouer();
-
                         break;
                     case 2:
                         //on affiche les meilleurs scores
