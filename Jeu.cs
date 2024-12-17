@@ -139,7 +139,7 @@ namespace Projet_boogle
                                           + "Il reste " + tempsRestant().Minutes + " minute(s) et " + tempsRestant().Seconds + " secondes au tour.\n"
                                           + plateau.toString()
                                           + "\nQuel mot voyez-vous ?");
-                        string mot = "";
+                        string mot = "penis merdeux";
                         if (joueurs[j].Nom == "IA")
                         {
                             mot = rechercheMotIA().ToUpper();
@@ -149,6 +149,7 @@ namespace Projet_boogle
                         {
                             mot = Console.ReadLine().ToUpper();
                         }
+                        Console.WriteLine(mot);
                         if (plateau.Test_Plateau(mot))
                         {
                             joueurs[j].Add_Score(mot, dictionnaire, i);
@@ -169,6 +170,7 @@ namespace Projet_boogle
             }
             if (this.dictionnaire.Dichotomie(chaineCaractères))
             {
+                Console.WriteLine("penis de Louis");
                 return chaineCaractères;
             }
             else
@@ -185,8 +187,12 @@ namespace Projet_boogle
                             Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
                             posInvalides.CopyTo(nouvelleListeInvalides, 0);
                             nouvelleListeInvalides[compteur] = posTestée;
-                            return rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTestée, compteur + 1);
-                            chaineCaractères = "";
+                            string mot = rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTestée, compteur + 1);
+                            if (!string.IsNullOrEmpty(mot))
+                            {
+                                Console.WriteLine("penis de merde qui tue");
+                                return mot;
+                            }
                         }
                     }
                 }
@@ -217,14 +223,19 @@ namespace Projet_boogle
                                         Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
                                         posInvalides.CopyTo(nouvelleListeInvalides, 0);
                                         nouvelleListeInvalides[compteur] = posTestée;
-                                        return rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTestée, compteur + 1);
+                                        string mot = rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTestée, compteur + 1);
+                                        if (!string.IsNullOrEmpty(mot))
+                                        {
+                                            Console.WriteLine("penis de merde tout court");
+                                            return mot;
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
-                return null;
+                return "null";
             }
         }
         #endregion

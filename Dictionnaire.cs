@@ -85,6 +85,7 @@ namespace Projet_boogle
             if (taille_mot >= 0 && taille_mot < mots.Count)
             {
                 int index = Dichotomique(mots[taille_mot], mot, mots[taille_mot].Count - 1);
+                Console.WriteLine("index penis " +  index);
                 return (index >= 0);
             }
             return false;
