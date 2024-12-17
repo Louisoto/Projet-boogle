@@ -21,7 +21,7 @@ namespace Projet_boogle
         public List<string>[] MotsTrouvés { get { return this.motsTrouvés;} }
         #endregion
 
-        #region Constructeurs
+        #region Constructeur
         public Joueur(string nom, int nbToursPartie)
         {
             this.nom = nom;
@@ -64,7 +64,10 @@ namespace Projet_boogle
         {
             this.motsTrouvés[tourEnCours].Add(mot);
         }
-
+        /// <summary>
+        /// Cette méthode retourne une chaine de caractère décrivant un joueur
+        /// </summary>
+        /// <returns></returns>
         public string toString()
         {
             string resul = "Le joueur " + this.nom + " a un score de " + this.score + ".\nLes mots trouvés sont : ";
