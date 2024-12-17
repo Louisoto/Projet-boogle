@@ -78,7 +78,7 @@ namespace Projet_boogle
                 {
                     resul += this.motsTrouvés[i][j] + " ; ";
                 }
-                resul.Remove(resul.Length - 3);
+                resul = resul.Remove(resul.Length - 2);
             }
             return resul;
         }
