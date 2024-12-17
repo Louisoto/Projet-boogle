@@ -35,7 +35,7 @@ namespace Projet_boogle
         public Dictionnaire(string langue) { 
             this.langue = langue;
             this.mots = Recuperer_Dictionnaire(langue);
-            this.motsOrdreAlpha = 
+            this.motsOrdreAlpha = Recuperer_Dictionnaire_Alpha(langue);
         }
         #endregion
 
@@ -127,22 +127,18 @@ namespace Projet_boogle
             return dictionnaire;
         }
 
-        public static List<List<string>> Recuperer_Dictionnaire_Alpha(string fichier)
+        public static List<string> Recuperer_Dictionnaire_Alpha(string fichier)
         {
-            List<List<string>> dictionnaire = new List<List<string>>();
+            List<string> dictionnaire = new List<string>();
+            List<string> mot_liste = new List<string>();
             try
             {
                 string contenu = File.ReadAllText("../../" + fichier + ".txt");
                 string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
-                dictionnaire = tri_taille(mots);
-                for (int i = 0; i < dictionnaire.Count; i++)
-                {
-                    if (dictionnaire[i] != null)
-                    {
-                        dictionnaire[i] = tri_fusion(dictionnaire[i]);
-                    }
-                }
 
+                mot_liste.AddRange(mots);
+
+                dictionnaire = tri_fusion(mot_liste);      
             }
             catch (Exception ex)
             {
