@@ -43,6 +43,10 @@ namespace Projet_boogle
         #endregion
 
         #region Méthode
+        /// <summary>
+        /// Cette méthode retourne une chaine de caractère qui affiche le plateau avec la face visible de tous les dés et un petit décor
+        /// </summary>
+        /// <returns></returns>
         public string toString()
         {
             
@@ -99,7 +103,17 @@ namespace Projet_boogle
 
             return message;
         }
-
+        /// <summary>
+        /// Cette méthode récursive teste si le mot passé en paramètre est un mot élligible,
+        /// c’est-à-dire qu’il respecte les contraintes d'existence et d’adjacence, dans le plateau, des lettres qui le compose
+        /// </summary>
+        /// <param name="mot"></param> C'est le mot à tester
+        /// <param name="posInvalides"></param> Ce tableau stocke les positions déjà utilisées afin de ne pas y repasser
+        /// <param name="posCourante"></param> Il s'agit de la position de la dernière lettre trouvé à partir de laquelle 
+        ///                                    on cherche donc la suivante
+        /// <param name="compteur"></param> Ce paramètre initialisé à 0 nous permet de savoir où nous en sommes dans le mot pour stocker 
+        ///                                 la position courante à la bonne place dans le tableau des positions invalides
+        /// <returns></returns>
         public bool Test_Plateau(string mot, Position[] posInvalides = null, Position posCourante = null,int compteur = 0)
         {
             if (mot == "")
@@ -165,7 +179,10 @@ namespace Projet_boogle
                 return false;
             }
         }
-
+        /// <summary>
+        /// Cette fonction mélange le plateau, c'est à dire qu'elle réattribue aléatoirement une autre face, parmi les 6,
+        /// à chacun des dés du plateau
+        /// </summary>
         public void melanger()
         {
             for (int i = 0; i < taille; i++)
