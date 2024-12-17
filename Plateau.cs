@@ -28,19 +28,6 @@ namespace Projet_boogle
         #endregion
 
         #region Constructeurs
-        public Plateau()
-        {
-            this.taille = 4;
-            this.plateau = new De[this.taille, this.taille];
-            for (int i = 0; i < this.taille; i++)
-            {
-                for (int j = 0; j < this.taille; j++)
-                {
-                    plateau[i, j] = new De();
-                }
-            }
-        }
-
         public Plateau(int tailleJeu)
         {
             this.taille = tailleJeu;
