@@ -76,8 +76,9 @@ namespace Projet_boogle
                 resul += "\nAu round " + (i+1) + " : ";
                 for (int j = 0; j < this.motsTrouvés[i].Count; j++)
                 {
-                    resul += this.motsTrouvés[i][j];
+                    resul += this.motsTrouvés[i][j] + " ; ";
                 }
+                resul.Remove(resul.Length - 3);
             }
             return resul;
         }
