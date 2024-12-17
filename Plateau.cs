@@ -193,6 +193,11 @@ namespace Projet_boogle
                 }
             }
         }
+
+        public char elemPlateau(int i, int j)
+        {
+            return this.plateau[i, j].Face_visible;
+        }
         #endregion
     }
 }

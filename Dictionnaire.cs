@@ -73,7 +73,7 @@ namespace Projet_boogle
             return r;
         }
 
-        public bool Dichotimie(string mot)
+        public bool Dichotomie(string mot)
         {
             int taille_mot = mot.Length;
             if (taille_mot >= 0 && taille_mot < mots.Count)
@@ -239,6 +239,16 @@ namespace Projet_boogle
             {
                 return Dichotomique(t, elem, fin, milieu + 1);
             }
+        }
+
+        public bool Existence(string chaineCaractères)
+        {
+            bool testExistence = false;
+            if(Dichotomie(chaineCaractères))
+            {
+                testExistence = true;
+            }
+            return testExistence;
         }
         #endregion
     }

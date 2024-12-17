@@ -150,10 +150,48 @@ namespace Projet_boogle
                 }
             }
         }
-        
+
+        public string rechercheMotIA(string mot = "")
+        {
+            if (mot == "")
+            {
+                for (int i = 0; i < this.plateau.Taille; i++)
+                {
+                    for (int j = 0; j < this.plateau.Taille; j++)
+                    {
+                        mot += this.plateau.elemPlateau(i, j);
+                        for (int k = -1; k <= 1; k++)
+                        {
+                            for (int l = -1; l <= 1; l++)
+                            {
+                                mot += this.plateau.elemPlateau(i + k, j + l);
+                                if (this.dictionnaire.Existence(mot))
+                                {
+                                    return rechercheMotIA(mot);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int k = -1; k <= 1; k++)
+                {
+                    for (int l = -1; l <= 1; l++)
+                    {
+                        mot += this.plateau.elemPlateau(k, l);
+                        if (this.dictionnaire.Existence(mot))
+                        {
+                            return rechercheMotIA(mot);
+                        }
+                    }
+                }
+            }
+        }
         #endregion
 
 
-        
+
     }
 }

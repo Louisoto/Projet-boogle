@@ -94,7 +94,7 @@ namespace Projet_boogle
         /// <param name="tourEnCours"></param> Tour de la partie où le mot est entré
         public void Add_Score(string mot, Dictionnaire dico, int tourEnCours)
         {
-            if (mot.Length >= 2 && dico.Dichotimie(mot) && !this.Contain(mot, tourEnCours))
+            if (mot.Length >= 2 && dico.Dichotomie(mot) && !this.Contain(mot, tourEnCours))
             {
                 int ajout = 0;
                 for (int i = 0; i < mot.Length; i++)
