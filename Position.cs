@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Projet_boogle
 {
@@ -28,5 +29,20 @@ namespace Projet_boogle
         public int X { get { return x; } }
         public int Y { get { return y; } }
         #endregion
+
+        public bool PosInvalide(Position[] posInvalides)
+        {
+            for (int i = 0; i < posInvalides.Length; i++)
+            {
+
+                if (posInvalides[i] != null && posInvalides[i].X == this.X && posInvalides[i].Y == this.Y)
+                {
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

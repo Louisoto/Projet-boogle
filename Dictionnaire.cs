@@ -82,10 +82,9 @@ namespace Projet_boogle
         public bool Dichotomie(string mot)
         {
             int taille_mot = mot.Length;
-            if (taille_mot >= 2 && taille_mot < mots.Count)
+            if (taille_mot >= 0 && taille_mot < mots.Count)
             {
                 int index = Dichotomique(mots[taille_mot], mot, mots[taille_mot].Count - 1);
-                Console.WriteLine("index penis " +  index);
                 return (index >= 0);
             }
             return false;
@@ -236,43 +235,58 @@ namespace Projet_boogle
         }
 
         /// <summary>
-        /// Fonction recursive en divisé pour mieux regner de recherche dichotomique, qui prend en entre
-        /// une liste destring, un mot à cherche, et la taille de la liste et qui va de maniere recursive
-        /// chercher l'indice du mot dans ce tableau si on le trouve pas, alors on renvoie -1
+        /// Fonction recursive en diviser pour regner de recherche dichotomique, qui prend en entrée
+        /// une liste de string, un mot à chercher, et la taille de la liste et qui va de maniere recursive
+        /// chercher l'indice du mot dans ce tableau, si on ne le trouve pas alors on renvoie -1
         /// </summary>
         /// <param name="t"></param>
         /// <param name="elem"></param>
         /// <param name="fin"></param>
         /// <param name="debut"></param>
         /// <returns></returns>
-        public static int Dichotomique(List<string> t, string elem, int fin, int debut = 0)
+        public static int Dichotomique(List<string> dicoMotXLettres, string elem, int fin, int debut = 0)
         {
-            if (t == null || t.Count == 0 || debut > fin)
+            if (dicoMotXLettres == null || dicoMotXLettres.Count == 0 || debut > fin)
             {
                 return -1;
             }
 
             int milieu = (debut + fin) / 2;
 
-            if (t[milieu].CompareTo(elem) == 0) // on a trouvé le mot cherché
+            if (dicoMotXLettres[milieu].CompareTo(elem) == 0) // on a trouvé le mot cherché
             {
                 return milieu;
             }
-            else if (t[milieu].CompareTo(elem) > 0) // Le mot cherché est avant
+            else if (dicoMotXLettres[milieu].CompareTo(elem) > 0) // Le mot cherché est avant
             {
-                return Dichotomique(t, elem, milieu - 1, debut);
+                return Dichotomique(dicoMotXLettres, elem, milieu - 1, debut);
             }
             else // Le mot cherché est après
             {
-                return Dichotomique(t, elem, fin, milieu + 1);
+                return Dichotomique(dicoMotXLettres, elem, fin, milieu + 1);
             }
         }
 
-        public bool Existence(string chaineCaractères)
+        public bool Existence(string chaineCaractères, int fin, int debut = 0)
         {
-            if (Dichotomique(this.motsOrdreAlpha, chaineCaractères, motsOrdreAlpha.Count) == -1)
+            if (this.motsOrdreAlpha == null || this.motsOrdreAlpha.Count == 0 || debut > fin)
             {
                 return false;
+            }
+            int milieu = (debut + fin) / 2;
+            for (int i = 0; i < chaineCaractères.Length; i++)
+            {
+                if (chaineCaractères[i] != this.motsOrdreAlpha[milieu][i])
+                {
+                    if (this.motsOrdreAlpha[milieu].CompareTo(chaineCaractères) > 0) // Le mot cherché est avant
+                    {
+                        return Existence(chaineCaractères, milieu - 1, debut);
+                    }
+                    else // Le mot cherché est après
+                    {
+                        return Existence(chaineCaractères, fin, milieu + 1);
+                    }
+                }
             }
             return true;
         }

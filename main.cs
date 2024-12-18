@@ -95,7 +95,7 @@ namespace Projet_boogle
                         // Générer et afficher le nuage de mots
                         Bitmap bitmap = Program.GenerateWordCloud(words, frequencies);
                         System.Windows.Forms.Application.EnableVisualStyles();
-                        System.Windows.Forms.Application.Run(new Program(bitmap));
+                        //System.Windows.Forms.Application.Run(new Program(bitmap));
                         break;
                     case 4:
                         int choix_option = 0;

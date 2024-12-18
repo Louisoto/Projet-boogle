@@ -135,14 +135,14 @@ namespace Projet_boogle
                 {
                     Commencer_tour();
                     while (Verification_timer()) {
-                        Console.WriteLine("C'est au tour de " + joueurs[j].Nom + " de jouer.\n"
+                        Console.WriteLine("C'est au tour de " + this.joueurs[j].Nom + " de jouer.\n"
                                           + "Il reste " + tempsRestant().Minutes + " minute(s) et " + tempsRestant().Seconds + " secondes au tour.\n"
-                                          + plateau.toString()
+                                          + this.plateau.toString()
                                           + "\nQuel mot voyez-vous ?");
                         string mot = "penis merdeux";
-                        if (joueurs[j].Nom == "IA")
+                        if (this.joueurs[j].Nom == "IA")
                         {
-                            mot = rechercheMotIA().ToUpper();
+                            mot = RechercheMotIA().ToUpper();
                             Console.WriteLine(mot);
                         }
                         else
@@ -150,13 +150,13 @@ namespace Projet_boogle
                             mot = Console.ReadLine().ToUpper();
                         }
                         Console.WriteLine(mot);
-                        if (plateau.Test_Plateau(mot))
+                        if (this.plateau.Test_Plateau(mot))
                         {
                             joueurs[j].Add_Score(mot, dictionnaire, i);
                         }
                     }
                     Console.WriteLine(joueurs[j].toString(i));
-                    plateau.melanger();
+                    this.plateau.melanger();
                 }
             }
         }
@@ -170,7 +170,6 @@ namespace Projet_boogle
             }
             if (this.dictionnaire.Dichotomie(chaineCaractères))
             {
-                Console.WriteLine("penis de Louis");
                 return chaineCaractères;
             }
             else
@@ -190,7 +189,6 @@ namespace Projet_boogle
                             string mot = rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTestée, compteur + 1);
                             if (!string.IsNullOrEmpty(mot))
                             {
-                                Console.WriteLine("penis de merde qui tue");
                                 return mot;
                             }
                         }
@@ -198,7 +196,7 @@ namespace Projet_boogle
                 }
                 else
                 {
-                    if (this.dictionnaire.Existence(chaineCaractères))
+                    if (this.dictionnaire.Existence(chaineCaractères, this.dictionnaire.MotsOrdreAlpha.Count))
                     {
                         for (int i = -1; i <= 1; i++)
                         {
@@ -218,7 +216,7 @@ namespace Projet_boogle
                                     posTestée.Y >= 0 && posTestée.Y < this.TaillePlateau)
                                 {
                                     chaineCaractères += this.plateau.elemPlateau(posTestée.X, posTestée.Y);
-                                    if (this.dictionnaire.Existence(chaineCaractères))
+                                    if (this.dictionnaire.Existence(chaineCaractères, this.dictionnaire.MotsOrdreAlpha.Count))
                                     {
                                         Position[] nouvelleListeInvalides = new Position[posInvalides.Length];
                                         posInvalides.CopyTo(nouvelleListeInvalides, 0);
@@ -226,7 +224,6 @@ namespace Projet_boogle
                                         string mot = rechercheMotIA(chaineCaractères, nouvelleListeInvalides, posTestée, compteur + 1);
                                         if (!string.IsNullOrEmpty(mot))
                                         {
-                                            Console.WriteLine("penis de merde tout court");
                                             return mot;
                                         }
                                     }
@@ -235,8 +232,51 @@ namespace Projet_boogle
                         }
                     }
                 }
-                return "null";
+                return null;
             }
+        }
+        public string RechercheMotIA(string chaineCaractères = "", Position[] posInvalides = null, Position posCourante = null, int compteur = 0)
+        {
+            if (posCourante == null)
+            {
+                posInvalides = new Position[this.TaillePlateau * this.TaillePlateau];
+                for (int i = 0; i < this.TaillePlateau; i++)
+                {
+                    for (int j = 0; j < this.TaillePlateau; j++)
+                    {
+                        Position posTestée = new Position(i, j);
+                        posInvalides = new Position[this.TaillePlateau * this.TaillePlateau];
+                        string nouveauMot = RechercheMotIA(this.plateau.elemPlateau(i, j).ToString(), posInvalides, posTestée, compteur + 1);
+                    }
+                }
+                return null;
+            }
+            if (!this.dictionnaire.Existence(chaineCaractères, this.dictionnaire.MotsOrdreAlpha.Count))
+            {
+                return null;
+            }
+            if (this.dictionnaire.Dichotomie(chaineCaractères))
+            {
+                return chaineCaractères;
+            }
+            for (int i = -1; i <= 1; i++)
+            {
+                for (int j = -1; j <= 1; j++)
+                {
+                    Position posTestée = new Position(posCourante.X + i, posCourante.Y + j);
+                    if (posTestée.X >= 0 && posTestée.X < this.TaillePlateau &&
+                        posTestée.Y >= 0 && posTestée.Y < this.TaillePlateau &&
+                        !posTestée.PosInvalide(posInvalides))
+                    {
+                        string nouveauMot = chaineCaractères + this.plateau.elemPlateau(posTestée.X, posTestée.Y);
+                        Position[] nouvellePosInvalides = new Position[posInvalides.Length];
+                        posInvalides.CopyTo(nouvellePosInvalides, 0);
+                        nouvellePosInvalides[compteur] = posTestée;
+                        string motTrouvé = RechercheMotIA(nouveauMot, nouvellePosInvalides, posTestée, compteur + 1);
+                    }
+                }
+            }
+            return null;
         }
         #endregion
     }
