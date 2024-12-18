@@ -78,6 +78,13 @@ namespace Projet_boogle
 
         }
 
+
+        /// <summary>
+        /// Fonction provisoire
+        /// </summary>
+        /// <param name="words"></param>
+        /// <param name="frequencies"></param>
+        /// <returns></returns>
         public static List<KeyValuePair<string, int>> SortWordsByFrequency(List<string> words, List<int> frequencies)
         {
             List<KeyValuePair<string, int>> wordFrequencies = new List<KeyValuePair<string, int>>();
@@ -89,6 +96,13 @@ namespace Projet_boogle
             return wordFrequencies;
         }
 
+        /// <summary>
+        /// Fonction généré par inteligence artificielle, servant à generé un nuage de mot à partir
+        /// d'une liste de mot, et d'une liste de fréquence (correspondant aux mots)
+        /// </summary>
+        /// <param name="words"></param>
+        /// <param name="frequencies"></param>
+        /// <returns></returns>
         public static Bitmap GenerateWordCloud(List<string> words, List<int> frequencies)
         {
             WordCloud wordCloud = new WordCloud(800, 600, false);

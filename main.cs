@@ -70,7 +70,7 @@ namespace Projet_boogle
                         Console.Clear();
                         break;
                     case 3:
-                        // Affichage du nuage de mots
+                        // Affichage du nuage de mot (créé à l'aide d'une inteligence artificielle)
                         List<string> words = new List<string> { "CLOUD", "PROGRAM", "WORD", "C#", "EXAMPLE", "LIBRARY", "VISUAL" };
 
                         // Calculer les fréquences en fonction des scores des mots

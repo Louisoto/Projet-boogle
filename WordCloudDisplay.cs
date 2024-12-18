@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+//Cette classe a été créé via inteligence artificielle (chat GPT)
 namespace Projet_boogle
 {
     public class WordCloudDisplay : Form
