@@ -96,14 +96,21 @@ namespace Projet_boogle
         {
             if (mot.Length >= 2 && dico.Dichotomie(mot) && !this.Contain(mot, tourEnCours))
             {
-                int ajout = 0;
-                for (int i = 0; i < mot.Length; i++)
-                {
-                    ajout += De.Point_lettre(Convert.ToInt32(mot[i] - 'A'));
-                }
-                this.score += ajout * (mot.Length / 2);
+                this.score += Calcul_Score(mot);
                 this.Add_Mot(mot, tourEnCours);
             }
+        }
+
+        public static int Calcul_Score(string mot)
+        {
+            int score = 0;
+            for (int i = 0; i < mot.Length; i++)
+            {
+                // Récupérer le score de la lettre via la classe De
+                int lettreIndex = Convert.ToInt32(mot[i] - 'A');
+                score += De.Point_lettre(lettreIndex);
+            }
+            return score * (mot.Length / 2);
         }
         #endregion
     }

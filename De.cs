@@ -22,6 +22,7 @@ namespace Projet_boogle
         }
         public static int Point_lettre(int i)
         {
+            if (i<0 || i >= point_lettres.Length) return 0;
             return point_lettres[i];
         }
         #endregion

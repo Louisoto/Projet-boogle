@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 using System.Threading;
+using System.Windows.Forms;
+using WordCloudSharp;
+
 using System.Threading.Tasks;
 
 namespace Projet_boogle
@@ -66,7 +70,32 @@ namespace Projet_boogle
                         Console.Clear();
                         break;
                     case 3:
-                        //affichage du nuage de mot
+                        // Affichage du nuage de mots
+                        List<string> words = new List<string> { "CLOUD", "PROGRAM", "WORD", "C#", "EXAMPLE", "LIBRARY", "VISUAL" };
+
+                        // Calculer les fréquences en fonction des scores des mots
+                        List<int> frequencies = new List<int>();
+                        foreach (string word in words)
+                        {
+                            frequencies.Add(Joueur.Calcul_Score(word));
+                        }
+
+                        // Trier les mots et fréquences par ordre décroissant de fréquence
+                        List<KeyValuePair<string, int>> wordFrequencies = Program.SortWordsByFrequency(words, frequencies);
+
+                        // Mise à jour des listes triées
+                        words = new List<string>();
+                        frequencies = new List<int>();
+                        foreach (var pair in wordFrequencies)
+                        {
+                            words.Add(pair.Key);
+                            frequencies.Add(pair.Value);
+                        }
+
+                        // Générer et afficher le nuage de mots
+                        Bitmap bitmap = Program.GenerateWordCloud(words, frequencies);
+                        System.Windows.Forms.Application.EnableVisualStyles();
+                        System.Windows.Forms.Application.Run(new Program(bitmap));
                         break;
                     case 4:
                         int choix_option = 0;

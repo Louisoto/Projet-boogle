@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
+using WordCloudSharp;
 
 namespace Projet_boogle
 {
@@ -73,6 +76,24 @@ namespace Projet_boogle
 ";
             return message;
 
+        }
+
+        public static List<KeyValuePair<string, int>> SortWordsByFrequency(List<string> words, List<int> frequencies)
+        {
+            List<KeyValuePair<string, int>> wordFrequencies = new List<KeyValuePair<string, int>>();
+            for (int i = 0; i < words.Count; i++)
+            {
+                wordFrequencies.Add(new KeyValuePair<string, int>(words[i], frequencies[i]));
+            }
+            wordFrequencies.Sort((a, b) => b.Value.CompareTo(a.Value));
+            return wordFrequencies;
+        }
+
+        public static Bitmap GenerateWordCloud(List<string> words, List<int> frequencies)
+        {
+            WordCloud wordCloud = new WordCloud(800, 600, false);
+            System.Drawing.Image image = wordCloud.Draw(words, frequencies);
+            return (Bitmap)image;
         }
     }
 }
