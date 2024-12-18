@@ -16,15 +16,6 @@ namespace Projet_boogle
         #endregion
 
         #region Getters
-        public string Langue
-        {
-            get { return langue; }
-        }
-
-        public List<List<string>> Mots
-        {
-            get { return mots; }
-        }
         public List<string> MotsOrdreAlpha
         {
             get { return motsOrdreAlpha; }
@@ -40,7 +31,7 @@ namespace Projet_boogle
         #endregion
 
         #region Méthode
-        public string tostring()
+        public string toString()
         {
             string r = "Le dictionnaire est en " + langue + ".\nIl contient :";
 
@@ -156,7 +147,7 @@ namespace Projet_boogle
         /// </summary>
         /// <param name="tableau"></param>
         /// <returns></returns>
-        static List<List<string>> tri_taille(string[] tableau)
+        private static List<List<string>> tri_taille(string[] tableau)
         {
             List<List<string>> dictionnaire = new List<List<string>>();
 
@@ -179,7 +170,7 @@ namespace Projet_boogle
         /// </summary>
         /// <param name="tableau"></param>
         /// <returns></returns>
-        static List<string> tri_fusion(List<string> tableau)
+        private static List<string> tri_fusion(List<string> tableau)
         {
             if (tableau.Count <= 1)
             {
@@ -204,7 +195,7 @@ namespace Projet_boogle
         /// <param name="gauche"></param>
         /// <param name="droite"></param>
         /// <returns></returns>
-        static List<string> Fusionner(List<string> gauche, List<string> droite)
+        private static List<string> Fusionner(List<string> gauche, List<string> droite)
         {
             List<string> resultat = new List<string>();
             int i = 0, j = 0;

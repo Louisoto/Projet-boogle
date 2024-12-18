@@ -25,7 +25,7 @@ namespace Projet_boogle
             Jeu.DureeTimer_option = TimeSpan.FromSeconds(60);
             Jeu.NbJoueurs_option = 2;
             Jeu.NbTours_option = 2;
-            Jeu.Tailleplateau_option = 4;
+            Jeu.TaillePlateau_option = 4;
             Jeu.Langue_option = "francais";
 
             Jeu.MeilleursScores = new int[20];
@@ -100,7 +100,7 @@ namespace Projet_boogle
                         int choix_option = 0;
                         while (choix_option != 6)
                         {
-                            Console.WriteLine("Option actuelles:\n1-Taille plateau : " + Jeu.Tailleplateau_option +
+                            Console.WriteLine("Option actuelles:\n1-Taille plateau : " + Jeu.TaillePlateau_option +
                                 "\n2-Temps timer : " + Jeu.DureeTimer_option +
                                 "\n3-Nombre de tours : " + Jeu.NbTours_option +
                                 "\n4-Nombre de joueur : " + Jeu.NbJoueurs_option +
@@ -113,7 +113,7 @@ namespace Projet_boogle
                             {
                                 case 1:
                                     Console.WriteLine("Modification de la taille du plateau\nQuelle est la nouvelle taille ?");
-                                    Jeu.Tailleplateau_option = Program.SaisieNombreSecur();
+                                    Jeu.TaillePlateau_option = Program.SaisieNombreSecur();
                                     Console.Clear();
                                     break;
                                 case 2:

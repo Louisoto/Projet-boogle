@@ -83,6 +83,19 @@ namespace Projet_boogle
             }
             return resul;
         }
+        public string toStringSimple()
+        {
+            string resul = "C'est au tour de ";
+            Console.ForegroundColor = ConsoleColor.Blue;
+            resul += this.nom;
+            Console.ResetColor();
+            resul += " de jouer. Son score actuel est de ";
+            Console.ForegroundColor = ConsoleColor.Blue;
+            resul += this.score;
+            Console.ResetColor();
+            resul += ".\n";
+            return resul;
+        }
 
         /// <summary>
         /// Dans un premier temps cette fonction vérifie que un mot passé en paramètre appartient bien au dictionnaire et est bien sur le plateau.

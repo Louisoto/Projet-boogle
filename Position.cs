@@ -34,14 +34,11 @@ namespace Projet_boogle
         {
             for (int i = 0; i < posInvalides.Length; i++)
             {
-
                 if (posInvalides[i] != null && posInvalides[i].X == this.X && posInvalides[i].Y == this.Y)
                 {
-
                     return true;
                 }
             }
-
             return false;
         }
     }
