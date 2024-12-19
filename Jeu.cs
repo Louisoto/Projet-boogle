@@ -142,7 +142,7 @@ namespace Projet_boogle
                         }
                         else
                         {
-                            mot = Console.ReadLine().ToUpper();
+                            mot = Console.ReadLine().ToUpper().Trim();
                         }
                         if (this.plateau.Test_Plateau(mot))
                         {
@@ -166,6 +166,7 @@ namespace Projet_boogle
                             Console.WriteLine("Mot Absent du plateau");
                             Thread.Sleep(1000);
                         }
+                        Console.ResetColor();
                     }
                     Console.Clear();
                     Console.WriteLine(joueurs[j].toString(i));
