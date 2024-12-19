@@ -80,7 +80,12 @@ namespace Projet_boogle
             return message;
 
         }
-
+        /// <summary>
+        /// Fonction pour afficher le gagnant d'une partie et son score
+        /// </summary>
+        /// <param name="pseudo"></param> pseudo du gagnant de la partie
+        /// <param name="score"></param> score du gagnant de la partie 
+        /// <returns> renvoie un string avec le message </returns>
         public static string AffichageVictoire(string pseudo, int score)
         {
             string message = @"
@@ -103,7 +108,10 @@ __      __ _____   _____  _______   ____   _____  _____   ______      _____   __
     >>>>>>>>>>>>>>>>>>>>>>>>  " + score + @"  <<<<<<<<<<<<<<<<<<<<<<<<";
             return message;
         }
-
+        /// <summary>
+        /// Fonction pour afficher les règles
+        /// </summary>
+        /// <returns> renvoie un string avec le message </returns>
         public static string AffichageRegles()
         {
             string message = @"
