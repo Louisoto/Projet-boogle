@@ -41,7 +41,7 @@ namespace Projet_boogle
         /// <param name="mot"></param> Mot à tester
         /// <param name="tourEnCours"></param> Tour de la partie où il faut effectuer le test
         /// <returns></returns>
-        public bool Contain(string mot, int tourEnCours)
+        private bool Contain(string mot, int tourEnCours)
         {
             bool test = false;
             for (int i = 0; i < this.motsTrouvés[tourEnCours].Count && !test; i++)
@@ -58,7 +58,7 @@ namespace Projet_boogle
         /// ajoute le mot dans la liste des mots déjà trouvés par le joueur au cours de la partie en modifiant le nombre d’occurrences si nécessaire
         /// </summary>
         /// <param name="mot"></param>
-        public void Add_Mot(string mot, int tourEnCours)
+        private void Add_Mot(string mot, int tourEnCours)
         {
             this.motsTrouvés[tourEnCours].Add(mot);
         }
