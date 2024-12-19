@@ -106,7 +106,7 @@ namespace Projet_boogle
                 {
                     if (dictionnaire[i] != null)
                     {
-                        dictionnaire[i] = tri_fusion(dictionnaire[i]);
+                        dictionnaire[i] = tri_rapide(dictionnaire[i]);
                     }
                 }
 
@@ -129,7 +129,7 @@ namespace Projet_boogle
 
                 mot_liste.AddRange(mots);
 
-                dictionnaire = tri_fusion(mot_liste);      
+                dictionnaire = tri_rapide(mot_liste);      
             }
             catch (Exception ex)
             {
@@ -166,63 +166,44 @@ namespace Projet_boogle
         }
 
         /// <summary>
-        /// Tri fusion classique en recursive, qui prend en entrée une liste de string non trié, et on la trie par ordre alphabetique
+        /// Tri rapide classique en recursif, qui prend en entrée une liste de string non trié, et on la trie par ordre alphabetique
         /// </summary>
         /// <param name="tableau"></param>
         /// <returns></returns>
-        private static List<string> tri_fusion(List<string> tableau)
+        static List<string> tri_rapide(List<string> tableau)
         {
             if (tableau.Count <= 1)
             {
                 return tableau;
             }
 
-            int milieu = tableau.Count / 2;
+            // Sélection du pivot (ici, on prend le dernier élément)
+            string pivot = tableau[tableau.Count - 1];
+            List<string> gauche = new List<string>();
+            List<string> droite = new List<string>();
 
-            List<string> gauche = new List<string>(tableau.GetRange(0, milieu));
-            List<string> droite = new List<string>(tableau.GetRange(milieu, tableau.Count - milieu));
-
-
-            gauche = tri_fusion(gauche);
-            droite = tri_fusion(droite);
-
-            return Fusionner(gauche, droite);
-        }
-
-        /// <summary>
-        /// Fonction pour fusionner des tableaux tout en respectant l'ordre alphabetique
-        /// </summary>
-        /// <param name="gauche"></param>
-        /// <param name="droite"></param>
-        /// <returns></returns>
-        private static List<string> Fusionner(List<string> gauche, List<string> droite)
-        {
-            List<string> resultat = new List<string>();
-            int i = 0, j = 0;
-
-            while (i < gauche.Count && j < droite.Count)
+            // Division des éléments par rapport au pivot
+            for (int i = 0; i < tableau.Count - 1; i++)
             {
-                if (gauche[i].CompareTo(droite[j]) <= 0)
+                if (tableau[i].CompareTo(pivot) <= 0)
                 {
-                    resultat.Add(gauche[i++]);
+                    gauche.Add(tableau[i]);
                 }
                 else
                 {
-                    resultat.Add(droite[j++]);
+                    droite.Add(tableau[i]);
                 }
             }
 
-            while (i < gauche.Count)
-            {
-                resultat.Add(gauche[i++]);
-            }
+            // Application récursive du tri rapide sur les sous-listes
+            gauche = tri_rapide(gauche);
+            droite = tri_rapide(droite);
 
-            while (j < droite.Count)
-            {
-                resultat.Add(droite[j++]);
-            }
+            // Combinaison des résultats
+            gauche.Add(pivot);
+            gauche.AddRange(droite);
 
-            return resultat;
+            return gauche;
         }
 
         /// <summary>
