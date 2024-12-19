@@ -106,13 +106,15 @@ namespace Projet_boogle
         /// <param name="mot"></param> Mot à tester
         /// <param name="dico"></param> Langue du jeu en cours
         /// <param name="tourEnCours"></param> Tour de la partie où le mot est entré
-        public void Add_Score(string mot, Dictionnaire dico, int tourEnCours)
+        public bool Add_Score(string mot, Dictionnaire dico, int tourEnCours)
         {
             if (mot.Length >= 2 && dico.Dichotomie(mot) && !this.Contain(mot, tourEnCours))
             {
                 this.score += Calcul_Score(mot);
                 this.Add_Mot(mot, tourEnCours);
+                return true;
             }
+            return false;
         }
 
         public static int Calcul_Score(string mot)

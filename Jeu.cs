@@ -146,7 +146,25 @@ namespace Projet_boogle
                         }
                         if (this.plateau.Test_Plateau(mot))
                         {
-                            joueurs[j].Add_Score(mot, dictionnaire, i);
+                            bool test = joueurs[j].Add_Score(mot, dictionnaire, i);
+                            if (test)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("Mot Correct");
+                                Thread.Sleep(500);
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Mot Incorrect (déjà trouvé ou pas dans le dictionnaire)");
+                                Thread.Sleep(500);
+                            }
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Mot Absent du plateau");
+                            Thread.Sleep(500);
                         }
                     }
                     Console.Clear();
