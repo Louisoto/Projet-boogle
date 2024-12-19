@@ -152,7 +152,7 @@ namespace Projet_boogle
                     Console.Clear();
                     Console.WriteLine(joueurs[j].toString(i));
                     Console.WriteLine("Appuyez sur une touche pour continuer");
-                    Console.ReadLine();
+                    Console.ReadKey();
                     Console.Clear();
                     this.plateau.melanger();
                 }
@@ -172,7 +172,7 @@ namespace Projet_boogle
             Console.WriteLine(Program.AffichageVictoire(vainqueur.Nom, vainqueur.Score));
 
             Console.WriteLine("\n\nAppuyez sur une touche pour continuer");
-            Console.ReadLine();
+            Console.ReadKey();
             Console.Clear();
 
 
@@ -182,8 +182,6 @@ namespace Projet_boogle
                 MajMotsJoueur(joueurs[i]);
                 MajMeilleursScores(joueurs[i]);
             }
-
-
         }
 
         public string RechercheMotIA(string chaineCaractères = "", Position[] posInvalides = null, Position posCourante = null, int compteur = 0)

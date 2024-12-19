@@ -58,14 +58,12 @@ namespace Projet_boogle
                         {
                             Console.WriteLine("Il faut avoir deja jouer pour avoir des meilleurs scores...");
                             Console.WriteLine("\nAppuyez sur une touche pour quitter");
-                            Console.ReadLine();
+                            Console.ReadKey();
                             Console.Clear();
                             break;
                         }
-
                         Console.WriteLine("Le meilleur score est de " + Jeu.MeilleursScores[0] +
                                                   " réalisé par " + Jeu.NomJoueurMeilleursScores[0]);
-
                         for (int i = 1; i < Jeu.MeilleursScores.Length ; i++)
                         {
                             if (Jeu.MeilleursScores[i] != 0)
@@ -79,7 +77,7 @@ namespace Projet_boogle
                             }                            
                         }
                         Console.WriteLine("\nAppuyez sur une touche pour quitter");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         Console.Clear();
                         break;
                     case 3:
@@ -131,14 +129,13 @@ namespace Projet_boogle
                         WordCloudDisplay.Show(bitmapNuage);
 
                         Console.WriteLine("\nAppuyez sur une touche pour continuer");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         Console.Clear();
                         break;
-
                     case 4:
                         Console.WriteLine(Program.AffichageRegles());
                         Console.WriteLine("\nAppuyez sur une touche pour continuer");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         Console.Clear();
                         break;
                     case 5:
