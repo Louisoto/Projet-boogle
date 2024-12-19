@@ -151,20 +151,20 @@ namespace Projet_boogle
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Mot Correct");
-                                Thread.Sleep(500);
+                                Thread.Sleep(1000);
                             }
                             else
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Mot Incorrect (déjà trouvé ou pas dans le dictionnaire)");
-                                Thread.Sleep(500);
+                                Console.WriteLine("Mot Incorrect");
+                                Thread.Sleep(1000);
                             }
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Mot Absent du plateau");
-                            Thread.Sleep(500);
+                            Thread.Sleep(1000);
                         }
                     }
                     Console.Clear();
