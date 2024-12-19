@@ -78,6 +78,66 @@ namespace Projet_boogle
 
         }
 
+        public static string AffichageVictoire(string pseudo, int score)
+        {
+            string message = @"
+__      __ _____   _____  _______   ____   _____  _____   ______      _____   ______
+\ \    / /|_   _| / ____||__   __| / __ \ |_   _||  __ \ |  ____|    |  __ \ |  ____|
+ \ \  / /   | |  | |        | |   | |  | |  | |  | |__) || |__       | |  | || |__
+  \ \/ /    | |  | |        | |   | |  | |  | |  |  _  / |  __|      | |  | ||  __|
+   \  /    _| |_ | |____    | |   | |__| | _| |_ | | \ \ | |____     | |__| || |____
+    \/    |_____| \_____|   |_|    \____/ |_____||_|  \_\|______|    |_____/ |______|
+
+
+    >>>>>>>>>>>>>>>>>>>>>>>>  " + pseudo + @"  <<<<<<<<<<<<<<<<<<<<<<<<
+                                                                                    _
+                                                                                   | |        _
+  __ _ __   __  ___   ___     _   _  _ __      ___   ___   ___   _ __   ___      __| |  ___  (_)
+ / _` |\ \ / / / _ \ / __|   | | | || '_ \    / __| / __| / _ \ | '__| / _ \    / _` | / _ \
+| (_| | \ V / |  __/| (__    | |_| || | | |   \__ \| (__ | (_) || |   |  __/   | (_| ||  __/  _
+ \__,_|  \_/   \___| \___|    \__,_||_| |_|   |___/ \___| \___/ |_|    \___|    \__,_| \___| (_)
+
+" + score;
+            return message;
+        }
+
+        public static string AffichageRegles()
+        {
+            string message = @"
+Le jeu de Boggle est un jeu de société fascinant et stimulant qui met à l'épreuve les compétences en vocabulaire et en 
+observation des joueurs. Bien que sa simplicité apparente puisse être trompeuse, Boggle offre une profondeur qui le 
+rend addictif et difficile à maîtriser. Ce jeu a été créé en 1972 par Allan Turoff, un ingénieur et inventeur, et il 
+est rapidement devenu un classique des jeux de mots. Son succès s'explique par sa capacité à captiver les joueurs de 
+tous âges, grâce à son côté à la fois compétitif et convivial.
+
+Les règles de base de Boggle sont relativement simples à comprendre, mais elles demandent une grande concentration et 
+une certaine rapidité d'esprit. Voici un aperçu des règles essentielles du jeu :
+
+    La grille de lettres : La grille de Boggle est composée de 16 cases, chacune contenant une lettre. Ces lettres sont 
+    choisies aléatoirement et les joueurs peuvent les relier entre elles pour former des mots. La grille est un carré de
+    taille initial de 4x4, mais il est possible de la modifier dans les paramettres.
+
+    Formation des mots : Les mots doivent être formés en reliant des lettres adjacentes. Les lettres peuvent être 
+    reliées horizontalement, verticalement ou en diagonale. Il n'est pas permis d'utiliser une même case plus d'une fois
+    pour un même mot. De plus, les mots doivent comporter au moins deux lettres pour être valides.
+
+    Durée de la partie : Un chronomètre est utilisé pour limiter le temps de chaque ronde. Les joueurs ont un
+    temps défini (1 minute initiallement, mais ce temps est aussi modifiable) pour trouver autant de mots que possible.
+
+    Validité des mots : Les mots doivent être inscrits dans un dictionnaire standard (français ou anglais) pour être validés.
+    Les noms propres, les abréviations et les mots étrangers ne sont pas autorisés.
+
+    Comptage des points : Les points sont attribués en fonction des lettre qui compose le mot. 0 la maniere d'un scrabble où
+    plus un mot est rare, plus il rapportera de points. De plus un bonus est appliqué en fonction de la taille du mot.
+
+    La fin de la partie : La partie se termine après un nombre défini de tour. Le joueur avec le plus de points à la fin de
+    la partie est déclaré vainqueur.
+
+Amusez vous bien et bonne chance !";
+
+            return message;
+        }
+
 
         /// <summary>
         /// Fonction provisoire

@@ -18,7 +18,7 @@ namespace Projet_boogle
             De.initialisationValLettres("francais");
 
             Console.WriteLine(Program.AffichageTitre());
-            Thread.Sleep(500);
+            Thread.Sleep(3000);
             Console.Clear();
 
             //initialisation des options du jeu
@@ -32,14 +32,15 @@ namespace Projet_boogle
             Jeu.NomJoueurMeilleursScores = new string[20];
 
             int choix = 0;
-            while (choix != 5)
+            while (choix != 6)
             {
                 Console.WriteLine("Menu:\n" +
                     "1- Nouvelle partie\n" +
                     "2- Meilleurs scores\n" +
                     "3- Nuage de mots\n" +
-                    "4- Option\n" +
-                    "5- Quitter le jeu\n\n" +
+                    "4- Règles du jeu\n" +
+                    "5- Option\n" +
+                    "6- Quitter le jeu\n\n" +
                     "Quel est votre choix ?");
                 choix = Program.SaisieNombreSecur();
                 Console.Clear();
@@ -53,16 +54,28 @@ namespace Projet_boogle
                         break;
                     case 2:
                         //on affiche les meilleurs scores
-                        for (int i = 0; i < Jeu.MeilleursScores.Length; i++)
+                        if (Jeu.MeilleursScores[0] == 0)
+                        {
+                            Console.WriteLine("Il faut avoir deja jouer pour avoir des meilleurs scores...");
+                            Console.WriteLine("\nAppuyez sur une touche pour quitter");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                        }
+
+                        Console.WriteLine("Le meilleur score est de " + Jeu.MeilleursScores[0] +
+                                                  " réalisé par " + Jeu.NomJoueurMeilleursScores[0]);
+
+                        for (int i = 1; i < Jeu.MeilleursScores.Length ; i++)
                         {
                             if (Jeu.MeilleursScores[i] != 0)
                             {
-                                Console.WriteLine("Le " + i + "ème meilleur score est de " + Jeu.MeilleursScores[i] +
+                                Console.WriteLine("Le " + (i+1) + "ème meilleur score est de " + Jeu.MeilleursScores[i] +
                                                   " réalisé par " + Jeu.NomJoueurMeilleursScores[i]);
                             }
                             else
                             {
-                                Console.WriteLine("Aucun score enregistré");
+                                break;
                             }                            
                         }
                         Console.WriteLine("\nAppuyez sur une touche pour quitter");
@@ -70,33 +83,65 @@ namespace Projet_boogle
                         Console.Clear();
                         break;
                     case 3:
-                        // Affichage du nuage de mot (créé à l'aide d'une inteligence artificielle)
-                        List<string> words = new List<string> { "CLOUD", "PROGRAM", "WORD", "C#", "EXAMPLE", "LIBRARY", "VISUAL" };
-
-                        // Calculer les fréquences en fonction des scores des mots
-                        List<int> frequencies = new List<int>();
-                        foreach (string word in words)
+                        // Affichage du nuage de mot 
+                        //Si il n'y a aucun joueur, on ne peut rien afficher
+                        if (Jeu.Mots_joueurs == null || Jeu.Mots_joueurs.Count == 0)
                         {
-                            frequencies.Add(Joueur.Calcul_Score(word));
+                            Console.WriteLine("Lancez une partie avant de pouvoir acceder à cette fonctionnalité");
+                            break;
                         }
 
-                        // Trier les mots et fréquences par ordre décroissant de fréquence
-                        List<KeyValuePair<string, int>> wordFrequencies = Program.SortWordsByFrequency(words, frequencies);
-
-                        // Mise à jour des listes triées
-                        words = new List<string>();
-                        frequencies = new List<int>();
-                        foreach (var pair in wordFrequencies)
+                        //on presente tous les joueurs
+                        Console.WriteLine("Liste des joueurs disponibles :");
+                        foreach (var pseudo in Jeu.Mots_joueurs.Keys)
                         {
-                            words.Add(pair.Key);
-                            frequencies.Add(pair.Value);
+                            Console.WriteLine("- " + pseudo);
+                        }
+                        Console.WriteLine("\nEntrez le nom du joueur dont vous souhaitez voir le nuage de mots :");
+                        string pseudoJoueur = Console.ReadLine();
+
+                        //si le joueur n'existe pas alors on sort
+                        if (!Jeu.Mots_joueurs.ContainsKey(pseudoJoueur))
+                        {
+                            Console.WriteLine("Ce joueur n'existe pas encore");
+                            break;
                         }
 
-                        // Générer et afficher le nuage de mots
-                        Bitmap bitmap = Program.GenerateWordCloud(words, frequencies);
-                        WordCloudDisplay.Show(bitmap);
+                        // Si le joueur n'a trouvé aucun mot en jouant, alors on sort
+                        List<string> mots = Jeu.Mots_joueurs[pseudoJoueur];
+                        if (mots.Count == 0)
+                        {
+                            Console.WriteLine("Il n'y a aucun mot pour former le nuage de mot");
+                            break;
+                        }
+
+                        //créaton de la liste des frequences en fonction de l'ordre du mot dans la liste
+                        //le premier mot est celui qui donne le plus de points, puis ils sont trié dans l'ordre décroissant
+                        List<int> frequences = new List<int>();
+                        int multiplicateur = 10; 
+                        for (int i = 0; i< mots.Count; i++)
+                        {
+                            frequences.Add((mots.Count * multiplicateur) - (multiplicateur * i));
+                        }
+
+
+                        //Partie créé à l'aide de l'intelligence artificielle
+                        Console.WriteLine("\nUne fois que vous avez finis de regarder, quittez la fenetre");
+                        Bitmap bitmapNuage = Program.GenerateWordCloud(mots, frequences);
+                        WordCloudDisplay.Show(bitmapNuage);
+
+                        Console.WriteLine("\nAppuyez sur une touche pour continuer");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
+
                     case 4:
+                        Console.WriteLine(Program.AffichageRegles());
+                        Console.WriteLine("\nAppuyez sur une touche pour continuer");
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    case 5:
                         int choix_option = 0;
                         while (choix_option != 6)
                         {
@@ -151,9 +196,9 @@ namespace Projet_boogle
                             }
                         }
                         break;
-                    case 5:
+                    case 6:
                         Console.WriteLine(Program.AffichageFin());
-                        Thread.Sleep(3000);
+                        Thread.Sleep(2000);
                         break;
                     default:
                         Console.WriteLine("Commande incorecte");

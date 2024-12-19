@@ -45,7 +45,7 @@ namespace Projet_boogle
         public string toString()
         {
             
-
+            //haut du plateau
             string message = "";
             for (int i = 0; i < (2 * this.taille + 5); i++)
             {
@@ -59,29 +59,47 @@ namespace Projet_boogle
             message += "/|\n";
 
 
+            //Millieu du plateau
             for (int i = 0; i < this.taille; i++)
             {
-                message += "| -";
+                message += "| ";
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.White;
+                message += " ";
                 for (int j = 0; j < this.taille; j++)
                 {
-                    message += "--";
+                    message += "  ";
                 }
-                message += " |\n| |";
+
+                Console.ResetColor();
+                message += " |\n| ";
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.White;
+                message += " ";
                 for (int j = 0; j < this.taille; j++)
                 {
                     message +=  this.plateau[i, j].Face_visible;
-                    message += "|";
+                    message += " ";
                 }
+
+                Console.ResetColor();
                 message += " |\n";
             }
-            message += "| -";
+            message += "| ";
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor = ConsoleColor.White;
+            message += " ";
             for (int j = 0; j < this.taille; j++)
             {
-                message += "--";
+                message += "  ";
             }
+
+            Console.ResetColor();
             message += " |\n";
 
-
+            //Bas du plateau
             message += "|/";
             for (int i = 0; i < (2 * this.taille + 1); i++)
             {
@@ -98,8 +116,83 @@ namespace Projet_boogle
 
             return message;
         }
+
+        public void toStringCouleur()
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            // Haut du plateau
+            for (int i = 0; i < (2 * this.taille + 5); i++)
+            {
+                Console.Write("_");
+            }
+            Console.WriteLine();
+
+            Console.Write("|\\");
+            for (int i = 0; i < (2 * this.taille + 1); i++)
+            {
+                Console.Write(" ");
+            }
+            Console.WriteLine("/|");
+
+            // Milieu du plateau
+            for (int i = 0; i < this.taille; i++)
+            {
+                // Ligne des points
+                Console.Write("| ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(" ");
+                for (int j = 0; j < this.taille; j++)
+                {
+                    Console.Write("  ");
+                }
+                Console.ResetColor();
+                Console.WriteLine(" |");
+
+                // Ligne des valeurs
+                Console.Write("| ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write(" ");
+                for (int j = 0; j < this.taille; j++)
+                {
+                    Console.Write($"{this.plateau[i, j].Face_visible} ");
+                }
+                Console.ResetColor();
+                Console.WriteLine(" |");
+            }
+
+            // Dernière ligne de séparation
+            Console.Write("| ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.Write(" ");
+            for (int j = 0; j < this.taille; j++)
+            {
+                Console.Write("  ");
+            }
+            Console.ResetColor();
+            Console.WriteLine(" |");
+
+            // Bas du plateau
+            Console.Write("|/");
+            for (int i = 0; i < (2 * this.taille + 1); i++)
+            {
+                Console.Write(" ");
+            }
+            Console.WriteLine("\\|");
+
+            for (int i = 0; i < (2 * this.taille + 5); i++)
+            {
+                Console.Write('‾');
+            }
+            Console.WriteLine();
+        }
+
+
         /// <summary>
-        /// Cette méthode récursive teste si le mot passé en paramètre est un mot élligible,
+        /// Cette méthode récursive teste si le mot passé en paramètre est un mot éligible,
         /// c’est-à-dire qu’il respecte les contraintes d'existence et d’adjacence, dans le plateau, des lettres qui le compose
         /// </summary>
         /// <param name="mot"></param> C'est le mot à tester
