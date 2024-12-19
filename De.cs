@@ -69,7 +69,7 @@ namespace Projet_boogle
         /// Méthode pour donner les informations sur le dé, c'est à dire ses faces ainsi que sa face visible
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public string toString()
         {
             string r = "Faces du dé: ";
             for (int i = 0; i< faces.Length; i++) {
