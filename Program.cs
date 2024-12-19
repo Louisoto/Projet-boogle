@@ -16,7 +16,10 @@ namespace Projet_boogle
         /// Initialisation de la fonction random
         /// </summary>
         public static Random random = new Random();
-
+        /// <summary>
+        /// Permet de sécuriser la saisie
+        /// </summary>
+        /// <returns> Renvoie un int correspondant au nombre saisi </returns>
         public static int SaisieNombreSecur()
         {
             int result = 0;
