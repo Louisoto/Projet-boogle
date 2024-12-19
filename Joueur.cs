@@ -16,9 +16,7 @@ namespace Projet_boogle
         #endregion
 
         #region Propriétés
-        public int Score { get { return this.score; } }
         public string Nom {  get { return this.nom; } }
-        public List<string>[] MotsTrouvés { get { return this.motsTrouvés;} }
         #endregion
 
         #region Constructeur
