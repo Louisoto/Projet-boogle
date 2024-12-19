@@ -39,7 +39,7 @@ namespace Projet_boogle
                     "2- Meilleurs scores\n" +
                     "3- Nuage de mots\n" +
                     "4- Règles du jeu\n" +
-                    "5- Option\n" +
+                    "5- Options\n" +
                     "6- Quitter le jeu\n\n" +
                     "Quel est votre choix ?");
                 choix = Program.SaisieNombreSecur();
@@ -142,10 +142,10 @@ namespace Projet_boogle
                         int choix_option = 0;
                         while (choix_option != 6)
                         {
-                            Console.WriteLine("Option actuelles:\n1-Taille plateau : " + Jeu.TaillePlateau_option +
+                            Console.WriteLine("Options actuelles:\n1-Taille plateau : " + Jeu.TaillePlateau_option +
                                 "\n2-Temps timer : " + Jeu.DureeTimer_option +
                                 "\n3-Nombre de tours : " + Jeu.NbTours_option +
-                                "\n4-Nombre de joueur : " + Jeu.NbJoueurs_option +
+                                "\n4-Nombre de joueurs : " + Jeu.NbJoueurs_option +
                                 "\n5-Langue : " + Jeu.Langue_option +
                                 "\n6-Sortir" +
                                 "\nQue souhaitez-vous modifier ?");
