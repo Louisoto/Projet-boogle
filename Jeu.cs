@@ -27,6 +27,8 @@ namespace Projet_boogle
 
         private static int[] meilleursScores;
         private static string[] nomJoueurMeilleursScores;
+
+        private static Dictionary<string, List<string>> mots_joueurs;
         #endregion
 
         #region Propriété
