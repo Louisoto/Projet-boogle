@@ -19,11 +19,6 @@ namespace Projet_boogle
         public int Taille
         {
             get { return taille; }
-            set {
-                Plateau nouveauPlateau = new Plateau(value);
-                this.taille = nouveauPlateau.taille;
-                this.plateau = nouveauPlateau.plateau;
-            }
         }
         #endregion
 
