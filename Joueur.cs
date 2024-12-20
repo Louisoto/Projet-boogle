@@ -86,18 +86,17 @@ namespace Projet_boogle
         }
 
 
-        public string toStringSimple()
+        public void toStringSimple()
         {
-            string resul = "C'est au tour de ";
-            Console.ForegroundColor = ConsoleColor.Blue;
-            resul += this.nom;
+            Console.Write("C'est au tour de ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(this.nom);
             Console.ResetColor();
-            resul += " de jouer. Son score actuel est de ";
-            Console.ForegroundColor = ConsoleColor.Blue;
-            resul += this.score;
+            Console.Write(" de jouer. Son score actuel est de ");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(this.score);
             Console.ResetColor();
-            resul += ".\n";
-            return resul;
+            Console.Write(".\n");
         }
 
         /// <summary>

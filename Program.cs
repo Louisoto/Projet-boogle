@@ -148,24 +148,6 @@ Amusez vous bien et bonne chance !";
             return message;
         }
 
-
-        /// <summary>
-        /// Fonction provisoire
-        /// </summary>
-        /// <param name="words"></param>
-        /// <param name="frequencies"></param>
-        /// <returns></returns>
-        public static List<KeyValuePair<string, int>> SortWordsByFrequency(List<string> words, List<int> frequencies)
-        {
-            List<KeyValuePair<string, int>> wordFrequencies = new List<KeyValuePair<string, int>>();
-            for (int i = 0; i < words.Count; i++)
-            {
-                wordFrequencies.Add(new KeyValuePair<string, int>(words[i], frequencies[i]));
-            }
-            wordFrequencies.Sort((a, b) => b.Value.CompareTo(a.Value));
-            return wordFrequencies;
-        }
-
         /// <summary>
         /// Fonction généré par intelligence artificielle, servant à generé un nuage de mot à partir
         /// d'une liste de mot, et d'une liste de fréquence (correspondant aux mots)

@@ -145,7 +145,6 @@ namespace Projet_boogle
 
             }
         }
-
         #endregion 
     }
 

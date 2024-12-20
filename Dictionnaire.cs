@@ -117,7 +117,6 @@ namespace Projet_boogle
             return dictionnaire;
         }
 
-
         /// <summary>
         /// Fonction pour trié les mots en fonction de leurs taille, et qui les place dans une liste (en fonction de leurs taille)
         /// 

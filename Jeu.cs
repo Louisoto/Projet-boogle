@@ -31,10 +31,6 @@ namespace Projet_boogle
         #endregion
 
         #region Propriété
-        public int TaillePlateau
-        {
-            get { return plateau.Taille; }
-        }
         public static TimeSpan DureeTimer_option
         {
             get { return dureeTimer_option; }
@@ -126,7 +122,8 @@ namespace Projet_boogle
                     Commencer_tour();
                     while (Verification_timer()) {
                         Console.Clear();
-                        Console.WriteLine(this.joueurs[j].toStringSimple() + "Temps restant : " + tempsRestant().Minutes +
+                        this.joueurs[j].toStringSimple();
+                        Console.WriteLine("Temps restant : " + tempsRestant().Minutes +
                             " minute(s) et " + tempsRestant().Seconds + " secondes.\n");
 
                         this.plateau.toStringCouleur();
@@ -176,8 +173,6 @@ namespace Projet_boogle
                     this.plateau.melanger();
                 }
             }
-
-
             Joueur vainqueur = joueurs[0];
             for (int i = 1; i < joueurs.Length; i++)
             {
@@ -186,14 +181,10 @@ namespace Projet_boogle
                     vainqueur = joueurs[i];
                 }
             }
-
             Console.WriteLine(Program.AffichageVictoire(vainqueur.Nom, vainqueur.Score));
-
             Console.WriteLine("\n\nAppuyez sur une touche pour continuer");
             Console.ReadKey();
             Console.Clear();
-
-
             for (int i = 0; i < nbJoueurs; i++)
             {
                 MajMotsJoueur(joueurs[i]);
@@ -207,12 +198,10 @@ namespace Projet_boogle
             {
                 mots_joueurs = new Dictionary<string, List<string>>();
             }
-
             if (!mots_joueurs.ContainsKey(joueur.Nom))
             {
                 mots_joueurs[joueur.Nom] = new List<string>();
             }
-
             List<string> motsVrac = new List<string>(mots_joueurs[joueur.Nom]);
             for (int tour = 0; tour < nbToursPartie; tour++)
             {
@@ -225,7 +214,6 @@ namespace Projet_boogle
                     }
                 }
             }
-
             for (int i = 0; i < motsVrac.Count - 1; i++)
             {
                 for (int j = i + 1; j < motsVrac.Count; j++)
@@ -239,7 +227,6 @@ namespace Projet_boogle
                     }
                 }
             }
-
             mots_joueurs[joueur.Nom] = motsVrac;
         }
 
@@ -266,8 +253,6 @@ namespace Projet_boogle
                 }
             }
         }
-
-
             #endregion
         }
 }

@@ -15,13 +15,6 @@ namespace Projet_boogle
         private De[,] plateau;
         #endregion
 
-        #region Getters
-        public int Taille
-        {
-            get { return taille; }
-        }
-        #endregion
-
         #region Constructeurs
         public Plateau(int tailleJeu)
         {
@@ -279,11 +272,6 @@ namespace Projet_boogle
                     plateau[i, j].Lance(Program.random);
                 }
             }
-        }
-
-        public char elemPlateau(int i, int j)
-        {
-            return this.plateau[i, j].Face_visible;
         }
         #endregion
     }
