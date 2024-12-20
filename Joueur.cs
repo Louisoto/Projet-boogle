@@ -84,6 +84,8 @@ namespace Projet_boogle
             }
             return resul;
         }
+
+
         public string toStringSimple()
         {
             string resul = "C'est au tour de ";
@@ -117,6 +119,12 @@ namespace Projet_boogle
             return false;
         }
 
+        /// <summary>
+        /// Methode pour calculer le score que rapporte un mot, à partir des valeurs que
+        /// rapport chaque lettre (contenue dans la classe DE) ainsi que la taile du mot.
+        /// </summary>
+        /// <param name="mot"></param>
+        /// <returns> score </returns>
         public static int Calcul_Score(string mot)
         {
             int score = 0;

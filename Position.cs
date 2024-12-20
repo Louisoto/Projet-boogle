@@ -30,6 +30,12 @@ namespace Projet_boogle
         public int Y { get { return y; } }
         #endregion
 
+        /// <summary>
+        /// Si l'instance testé correspond à une position invalide, alors la methode renvoie true.
+        /// Sinon elle renvoie false, la position testé est donc valide
+        /// </summary>
+        /// <param name="posInvalides"></param>
+        /// <returns></returns>
         public bool PosInvalide(Position[] posInvalides)
         {
             for (int i = 0; i < posInvalides.Length; i++)
