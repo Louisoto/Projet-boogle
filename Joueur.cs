@@ -85,7 +85,10 @@ namespace Projet_boogle
             return resul;
         }
 
-
+        /// <summary>
+        /// Affiche directement le nom d'un joueur et son score à chaque envoie de mot
+        /// (similaire a la precedente mais avec moins d'information)
+        /// </summary>
         public void toStringSimple()
         {
             Console.Write("C'est au tour de ");
