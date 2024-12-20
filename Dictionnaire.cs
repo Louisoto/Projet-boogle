@@ -12,25 +12,20 @@ namespace Projet_boogle
         #region Attributs
         private string langue;
         private List<List<string>> mots;
-        private List<string> motsOrdreAlpha;
-        #endregion
-
-        #region Getters
-        public List<string> MotsOrdreAlpha
-        {
-            get { return motsOrdreAlpha; }
-        }
         #endregion
 
         #region Constructeur
         public Dictionnaire(string langue) { 
             this.langue = langue;
             this.mots = Recuperer_Dictionnaire(langue);
-            this.motsOrdreAlpha = Recuperer_Dictionnaire_Alpha(langue);
         }
         #endregion
 
         #region Méthode
+        /// <summary>
+        /// Méthode pour renvoyer une chaine de charactere contenant les informations sur le dictionnaire 
+        /// </summary>
+        /// <returns></returns>
         public string toString()
         {
             string r = "Le dictionnaire est en " + langue + ".\nIl contient :";
@@ -67,6 +62,13 @@ namespace Projet_boogle
             return r;
         }
 
+        /// <summary>
+        /// Methode pour la recherche d'un mot en utilisant la recherche dihotomique, et en
+        /// l'applicant à chaque élement du sous tableau (pour ne cherche que parmi les mots
+        /// de la meme taille)
+        /// </summary>
+        /// <param name="mot"></param>
+        /// <returns></returns>
         public bool Dichotomie(string mot)
         {
             int taille_mot = mot.Length;
@@ -115,25 +117,6 @@ namespace Projet_boogle
             return dictionnaire;
         }
 
-        public static List<string> Recuperer_Dictionnaire_Alpha(string fichier)
-        {
-            List<string> dictionnaire = new List<string>();
-            List<string> mot_liste = new List<string>();
-            try
-            {
-                string contenu = File.ReadAllText("../../" + fichier + ".txt");
-                string[] mots = contenu.Split(' ', (char)StringSplitOptions.RemoveEmptyEntries);
-
-                mot_liste.AddRange(mots);
-
-                dictionnaire = tri_rapide(mot_liste);      
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Erreur lors de la lecture du fichier dictionnaire : " + ex.Message);
-            }
-            return dictionnaire;
-        }
 
         /// <summary>
         /// Fonction pour trié les mots en fonction de leurs taille, et qui les place dans une liste (en fonction de leurs taille)
@@ -230,29 +213,6 @@ namespace Projet_boogle
             {
                 return Dichotomique(dicoMotXLettres, elem, fin, milieu + 1);
             }
-        }
-
-        public bool Existence(string chaineCaractères, int fin, int debut = 0)
-        {
-            if (this.motsOrdreAlpha == null || this.motsOrdreAlpha.Count == 0 || debut > fin)
-            {
-                return false;
-            }
-            int milieu = (debut + fin) / 2;
-            for (int i = 0; i < chaineCaractères.Length; i++)
-            {
-                if (chaineCaractères[i] != this.motsOrdreAlpha[milieu][i])
-                {
-                    if (this.motsOrdreAlpha[milieu].CompareTo(chaineCaractères) > 0) {
-                        return Existence(chaineCaractères, milieu - 1, debut);
-                    }
-                    else 
-                    {
-                        return Existence(chaineCaractères, fin, milieu + 1);
-                    }
-                }
-            }
-            return true;
         }
         #endregion
     }
