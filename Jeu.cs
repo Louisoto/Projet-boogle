@@ -132,17 +132,7 @@ namespace Projet_boogle
 
                         this.plateau.toStringCouleur();
                         Console.WriteLine("\nQuel mot voyez-vous ?");
-
-                        string mot = "";
-                        if (this.joueurs[j].Nom == "IA")
-                        {
-                            mot = RechercheMotIA().ToUpper();
-                            Console.WriteLine(mot);
-                        }
-                        else
-                        {
-                            mot = Console.ReadLine().ToUpper().Trim();
-                        }
+                        string mot = Console.ReadLine().ToUpper().Trim();
                         if (this.plateau.Test_Plateau(mot))
                         {
                             bool test = joueurs[j].Add_Score(mot, dictionnaire, i);
@@ -169,7 +159,19 @@ namespace Projet_boogle
                     }
                     Console.Clear();
                     Console.WriteLine(joueurs[j].toString(i));
-                    Console.WriteLine("Appuyez sur une touche pour continuer");
+                    Console.Write("C'est au tour ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    if (j == joueurs.Length - 1)
+                    {
+                        Console.Write(joueurs[0].Nom);
+                    }
+                    else
+                    {
+                        Console.Write(joueurs[j + 1].Nom);
+                    }
+                    Console.ResetColor();
+                    Console.WriteLine(" de jouer\n" +
+                                      "Appuyez sur une touche pour continuer");
                     Console.ReadKey();
                     Console.Clear();
                     this.plateau.melanger();
@@ -198,50 +200,6 @@ namespace Projet_boogle
                 MajMotsJoueur(joueurs[i]);
                 MajMeilleursScores(joueurs[i]);
             }
-        }
-
-        public string RechercheMotIA(string chaineCaractères = "", Position[] posInvalides = null, Position posCourante = null, int compteur = 0)
-        {
-            if (posCourante == null)
-            {
-                posInvalides = new Position[this.TaillePlateau * this.TaillePlateau];
-                for (int i = 0; i < this.TaillePlateau; i++)
-                {
-                    for (int j = 0; j < this.TaillePlateau; j++)
-                    {
-                        Position posTestée = new Position(i, j);
-                        posInvalides = new Position[this.TaillePlateau * this.TaillePlateau];
-                        string nouveauMot = RechercheMotIA(this.plateau.elemPlateau(i, j).ToString(), posInvalides, posTestée, compteur + 1);
-                    }
-                }
-                return null;
-            }
-            if (!this.dictionnaire.Existence(chaineCaractères, this.dictionnaire.MotsOrdreAlpha.Count))
-            {
-                return null;
-            }
-            if (this.dictionnaire.Dichotomie(chaineCaractères))
-            {
-                return chaineCaractères;
-            }
-            for (int i = -1; i <= 1; i++)
-            {
-                for (int j = -1; j <= 1; j++)
-                {
-                    Position posTestée = new Position(posCourante.X + i, posCourante.Y + j);
-                    if (posTestée.X >= 0 && posTestée.X < this.TaillePlateau &&
-                        posTestée.Y >= 0 && posTestée.Y < this.TaillePlateau &&
-                        !posTestée.PosInvalide(posInvalides))
-                    {
-                        string nouveauMot = chaineCaractères + this.plateau.elemPlateau(posTestée.X, posTestée.Y);
-                        Position[] nouvellePosInvalides = new Position[posInvalides.Length];
-                        posInvalides.CopyTo(nouvellePosInvalides, 0);
-                        nouvellePosInvalides[compteur] = posTestée;
-                        string motTrouvé = RechercheMotIA(nouveauMot, nouvellePosInvalides, posTestée, compteur + 1);
-                    }
-                }
-            }
-            return null;
         }
         
         private void MajMotsJoueur( Joueur joueur)
