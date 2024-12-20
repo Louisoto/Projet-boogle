@@ -38,7 +38,6 @@ namespace Projet_boogle
         public string toString()
         {
             
-            //haut du plateau
             string message = "";
             for (int i = 0; i < (2 * this.taille + 5); i++)
             {
@@ -51,8 +50,6 @@ namespace Projet_boogle
             }
             message += "/|\n";
 
-
-            //Millieu du plateau
             for (int i = 0; i < this.taille; i++)
             {
                 message += "| ";
@@ -92,7 +89,6 @@ namespace Projet_boogle
             Console.ResetColor();
             message += " |\n";
 
-            //Bas du plateau
             message += "|/";
             for (int i = 0; i < (2 * this.taille + 1); i++)
             {
@@ -114,7 +110,6 @@ namespace Projet_boogle
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            // Haut du plateau
             for (int i = 0; i < (2 * this.taille + 5); i++)
             {
                 Console.Write("_");

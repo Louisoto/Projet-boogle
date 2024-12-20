@@ -21,7 +21,6 @@ namespace Projet_boogle
             Thread.Sleep(3000);
             Console.Clear();
 
-            //initialisation des options du jeu
             Jeu.DureeTimer_option = TimeSpan.FromSeconds(60);
             Jeu.NbJoueurs_option = 2;
             Jeu.NbTours_option = 2;
