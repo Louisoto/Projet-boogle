@@ -32,6 +32,10 @@ namespace Projet_boogle
         }
         #endregion
 
+        #region Propriété
+        public De ElemPlateau(int i, int j) { return plateau[i,j]; }
+        #endregion
+
         #region Méthode
         /// <summary>
         /// Cette méthode retourne une chaine de caractère qui affiche le plateau avec la face visible

@@ -21,6 +21,7 @@ namespace Projet_boogle
         }   
         public char Face_visible {  
             get { return face_visible; }
+            set { face_visible = value; }
         }
         public static int Point_lettre(int i)
         {
