@@ -267,6 +267,7 @@ namespace Projet_boogle
                 return false;
             }
         }
+
         /// <summary>
         /// Cette fonction mélange le plateau, c'est à dire qu'elle réattribue aléatoirement une autre face, parmi les 6,
         /// à chacun des dés du plateau

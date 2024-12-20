@@ -257,7 +257,8 @@ namespace Projet_boogle
         /// <summary>
         /// Methode pour mettre à jour les tableau contenant les meilleurs score et les pseudo
         /// correspondant. Le programme tri les score par ordre decroissant pour faciliter l'affichage
-        /// dans les parametres
+        /// jk:!
+        /// 456dans les parametres
         /// </summary>
         /// <param name="joueur"></param>
         private void MajMeilleursScores(Joueur joueur)
