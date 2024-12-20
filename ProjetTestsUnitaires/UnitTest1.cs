@@ -7,6 +7,7 @@ namespace Projet_boogle
     public class UnitTest1
     {
         [TestMethod]
+        #region Test méthode Test_Plateau
         public void TestMethod1()
         {
             Plateau plateau = new Plateau(4);
@@ -32,5 +33,6 @@ namespace Projet_boogle
             bool result = plateau.Test_Plateau("AFFECTIONNEE");
             Assert.AreEqual(result, true);
         }
+        #endregion
     }
 }
