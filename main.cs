@@ -49,6 +49,8 @@ namespace Projet_boogle
                 {
                     case 1:
                         Jeu jeu = new Jeu();
+                        Console.WriteLine("Appuyer sur une touche pour lancer le jeu");
+                        Console.ReadKey();
                         jeu.jouer();
                         break;
                     case 2:

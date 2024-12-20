@@ -119,7 +119,6 @@ namespace Projet_boogle
 
         public void jouer()
         {
-
             for (int i = 0; i < nbToursPartie; i++)
             {
                 for (int j = 0; j < nbJoueurs; j++)
