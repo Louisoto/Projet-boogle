@@ -23,11 +23,29 @@ namespace Projet_boogle
             get { return face_visible; }
             set { face_visible = value; }
         }
+
+        public char[] Lettres
+        {
+            get { return lettres; }
+        }
+
+        public int[] Point_lettres
+        {
+            get { return point_lettres; }
+        }
+
+        public int[] Probabilite_lettre
+        {
+            get { return probabilite_lettre; }
+        }
+
         public static int Point_lettre(int i)
         {
             if (i<0 || i >= point_lettres.Length) return 0;
             return point_lettres[i];
         }
+
+
         #endregion
 
         #region Constructeur

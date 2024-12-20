@@ -35,8 +35,22 @@ namespace Projet_boogle
         }
         #endregion
 
-
+        [TestMethod]
         #region louis
+        public void TestMethod2()
+        {
+            De.initialisationValLettres("francais");
+
+            char[] lettresAttendu = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            int[] pointsAttendu = new int[] { 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 10, 1, 2, 1, 1, 3, 8, 1, 1, 1, 1, 4, 10, 10, 10, 10 };
+            int[] probabiliteAttendu = new int[] { 9, 2, 2, 3, 15, 2, 2, 2, 8, 1, 1, 5, 3, 6, 6, 2, 1, 6, 6, 6, 6, 2, 1, 1, 1, 1 };
+
+            CollectionAssert.AreEqual(lettresAttendu, De.Lettres);
+            CollectionAssert.AreEqual(pointsAttendu, De.Point_lettres);
+            CollectionAssert.AreEqual(probabiliteAttendu, De.Probabilite_lettre);
+
+        }
+
         #endregion
     }
 }
