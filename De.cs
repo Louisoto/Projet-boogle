@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("ProjetTestsUnitaires")]
 
 namespace Projet_boogle
 {

@@ -4,6 +4,8 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("ProjetTestsUnitaires")]
 
 namespace Projet_boogle
 {

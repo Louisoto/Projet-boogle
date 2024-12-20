@@ -5,6 +5,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("ProjetTestsUnitaires")]
 
 namespace Projet_boogle
 {

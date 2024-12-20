@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using WordCloudSharp;
-
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("ProjetTestsUnitaires")]
 
 namespace Projet_boogle
 {
