@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Projet_boogle
 {
-    public class Joueur
+    internal class Joueur
     {
         #region Attributs
         private string nom;
