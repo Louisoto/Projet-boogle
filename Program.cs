@@ -33,7 +33,6 @@ namespace Projet_boogle
         /// /// <returns> renvoie un string avec le message </returns>
         public static string AffichageTitre()
         {
-            // On place le titre dans une chaine avec @ pour ne pas que les retourns à la ligne et les \ posent un probleme
             string message = @"
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
@@ -168,7 +167,7 @@ Amusez vous bien et bonne chance !";
         }
 
         /// <summary>
-        /// Fonction généré par inteligence artificielle, servant à generé un nuage de mot à partir
+        /// Fonction généré par intelligence artificielle, servant à generé un nuage de mot à partir
         /// d'une liste de mot, et d'une liste de fréquence (correspondant aux mots)
         /// </summary>
         /// <param name="words"></param>

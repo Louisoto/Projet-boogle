@@ -135,10 +135,10 @@ namespace Projet_boogle
             }
             Console.WriteLine("/|");
 
-            // Milieu du plateau
+
             for (int i = 0; i < this.taille; i++)
             {
-                // Ligne des points
+                
                 Console.Write("| ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.BackgroundColor = ConsoleColor.White;
@@ -150,7 +150,6 @@ namespace Projet_boogle
                 Console.ResetColor();
                 Console.WriteLine(" |");
 
-                // Ligne des valeurs
                 Console.Write("| ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.BackgroundColor = ConsoleColor.White;
@@ -163,7 +162,7 @@ namespace Projet_boogle
                 Console.WriteLine(" |");
             }
 
-            // Dernière ligne de séparation
+
             Console.Write("| ");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.BackgroundColor = ConsoleColor.White;
@@ -175,7 +174,7 @@ namespace Projet_boogle
             Console.ResetColor();
             Console.WriteLine(" |");
 
-            // Bas du plateau
+
             Console.Write("|/");
             for (int i = 0; i < (2 * this.taille + 1); i++)
             {

@@ -29,19 +29,18 @@ namespace Projet_boogle
 
         #region Constructeur
         public De() {
-            //Si on a oublié d'initialiser les valeur, alors on initialise en français (normallement pas besoin de le faire)
             if (lettres == null || point_lettres == null || probabilite_lettre == null)
             {
                 initialisationValLettres("francais");
             }
 
             this.faces = new char[6];
-            for (int i = 0; i < faces.Length; i++)//pour chaque face, on assigne une lettre aléatoirement en fonction des proba
+            for (int i = 0; i < faces.Length; i++)
             {
                 faces[i] = Choisir_Lettre_Aleatoire(lettres, probabilite_lettre);
             }
 
-            Lance(Program.random);// on utilise la methode lance pour assigner une face
+            Lance(Program.random);
         }
         #endregion
 
@@ -92,10 +91,9 @@ namespace Projet_boogle
         /// <returns></returns>
         public static char Choisir_Lettre_Aleatoire(char[] lettres, int[] probabilite_lettre)
         {
-            int tirage = Program.random.Next(1, 101); // Nombre aléatoire entre 1 et 100
+            int tirage = Program.random.Next(1, 101);
             int somme = 0;
 
-            //pour chaque iteration, on ajoute le "pourcentage", et dès que ça correspond au nombre aléatoire alors on prend la lettre qui correspond
             for (int i = 0; i < lettres.Length; i++)
             {
                 somme += probabilite_lettre[i];
@@ -105,7 +103,6 @@ namespace Projet_boogle
                 }
             }
 
-            // Retour par défaut au cas ou (normallement ça sert à rien mais bon on sait jamais)
             return lettres[lettres.Length - 1];
         }
 
@@ -122,23 +119,19 @@ namespace Projet_boogle
         {
             try
             {
-                // Lecture des lignes du fichier
                 string[] lignes_fichier = File.ReadAllLines("../../" + fichier);
 
-                // initiqlisation des tableaux
                 lettres = new char[lignes_fichier.Length];
                 points_lettre = new int[lignes_fichier.Length];
                 probabilite_lettre = new int[lignes_fichier.Length];
 
                 for (int i = 0; i < lignes_fichier.Length; i++)
                 {
-                    // Découper la ligne en trois parties, chaqu'une separée par ;
                     string[] parties = lignes_fichier[i].Split(';');
 
-                    // Stocker chaque valeur dans le tableau correspondant
-                    lettres[i] = char.Parse(parties[0]);          // lettres
-                    points_lettre[i] = int.Parse(parties[1]);     // points pas lettres
-                    probabilite_lettre[i] = int.Parse(parties[2]); // probabilité de chasue lettre
+                    lettres[i] = char.Parse(parties[0]);    
+                    points_lettre[i] = int.Parse(parties[1]);    
+                    probabilite_lettre[i] = int.Parse(parties[2]); 
                 }
             }
 

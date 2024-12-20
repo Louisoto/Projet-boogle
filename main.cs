@@ -48,12 +48,10 @@ namespace Projet_boogle
                 switch (choix)
                 {
                     case 1:
-                        //ici on deroule le jeu. Il faudrait fait une methode de jeu ou c'est "derouler jeu" et ça gere les manches etc
                         Jeu jeu = new Jeu();
                         jeu.jouer();
                         break;
                     case 2:
-                        //on affiche les meilleurs scores
                         if (Jeu.MeilleursScores[0] == 0)
                         {
                             Console.WriteLine("Il faut avoir deja jouer pour avoir des meilleurs scores...");
@@ -81,15 +79,12 @@ namespace Projet_boogle
                         Console.Clear();
                         break;
                     case 3:
-                        // Affichage du nuage de mot 
-                        //Si il n'y a aucun joueur, on ne peut rien afficher
                         if (Jeu.Mots_joueurs == null || Jeu.Mots_joueurs.Count == 0)
                         {
                             Console.WriteLine("Lancez une partie avant de pouvoir acceder à cette fonctionnalité");
                             break;
                         }
 
-                        //on presente tous les joueurs
                         Console.WriteLine("Liste des joueurs disponibles :");
                         foreach (var pseudo in Jeu.Mots_joueurs.Keys)
                         {
@@ -98,14 +93,12 @@ namespace Projet_boogle
                         Console.WriteLine("\nEntrez le nom du joueur dont vous souhaitez voir le nuage de mots :");
                         string pseudoJoueur = Console.ReadLine();
 
-                        //si le joueur n'existe pas alors on sort
                         if (!Jeu.Mots_joueurs.ContainsKey(pseudoJoueur))
                         {
                             Console.WriteLine("Ce joueur n'existe pas encore");
                             break;
                         }
 
-                        // Si le joueur n'a trouvé aucun mot en jouant, alors on sort
                         List<string> mots = Jeu.Mots_joueurs[pseudoJoueur];
                         if (mots.Count == 0)
                         {
@@ -113,8 +106,6 @@ namespace Projet_boogle
                             break;
                         }
 
-                        //créaton de la liste des frequences en fonction de l'ordre du mot dans la liste
-                        //le premier mot est celui qui donne le plus de points, puis ils sont trié dans l'ordre décroissant
                         List<int> frequences = new List<int>();
                         int multiplicateur = 10; 
                         for (int i = 0; i< mots.Count; i++)
@@ -123,7 +114,6 @@ namespace Projet_boogle
                         }
 
 
-                        //Partie créé à l'aide de l'intelligence artificielle
                         Console.WriteLine("\nUne fois que vous avez finis de regarder, quittez la fenetre");
                         Bitmap bitmapNuage = Program.GenerateWordCloud(mots, frequences);
                         WordCloudDisplay.Show(bitmapNuage);

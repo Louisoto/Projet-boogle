@@ -122,7 +122,6 @@ namespace Projet_boogle
             int score = 0;
             for (int i = 0; i < mot.Length; i++)
             {
-                // Récupérer le score de la lettre via la classe De
                 int lettreIndex = Convert.ToInt32(mot[i] - 'A');
                 score += De.Point_lettre(lettreIndex);
             }

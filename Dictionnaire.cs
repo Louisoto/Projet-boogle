@@ -10,7 +10,7 @@ namespace Projet_boogle
     internal class Dictionnaire
     {
         #region Attributs
-        private string langue;// anglais ou français
+        private string langue;
         private List<List<string>> mots;
         private List<string> motsOrdreAlpha;
         #endregion
@@ -35,35 +35,32 @@ namespace Projet_boogle
         {
             string r = "Le dictionnaire est en " + langue + ".\nIl contient :";
 
-            // Compteur par rapport à la longueur
             r += "\n\nNombre de mots par longueur :";
             for (int i = 0; i < mots.Count; i++)
             {
                 r += "\nLongueur " + (i + 2) + " : " + mots[i].Count + " mots";
             }
 
-            // Compteur par rapport à la lettre
             r += "\n\nNombre de mots par lettre :";
-            // On compte les mots par lettre à chaque fois, en les plaçant dans un tableau
+
             int[] CompteurLettres = new int[26];
             for (int i = 0; i < mots.Count; i++)
             {
                 for (int j = 0; j < mots[i].Count; j++)
                 {
-                    char premiereLettre = mots[i][j][0]; //  on prend la premiere lettre du mot
+                    char premiereLettre = mots[i][j][0];
                     if (premiereLettre >= 'A' && premiereLettre <= 'Z')
                     {
-                        CompteurLettres[premiereLettre - 'A']++; // on utilise la valeur ASCII des lettres pour retrouver la place qu'on leurs donne dans le tableau (ex: A donne 65)
+                        CompteurLettres[premiereLettre - 'A']++; 
                     }
                 }
             }
 
-            // Afficher les résultats pour chaque lettre
             for (int i = 0; i < 26; i++)
             {
                 if (CompteurLettres[i] > 0)
                 {
-                    r += "\n" + (char)(i + 'a') + " : " + CompteurLettres[i] + " mots"; // Affiche la lettre et le nombre de mots qui commencent par cette lettre
+                    r += "\n" + (char)(i + 'a') + " : " + CompteurLettres[i] + " mots";
                 }
             }
 
@@ -82,7 +79,7 @@ namespace Projet_boogle
         }
 
         /// <summary>
-        /// Fonction pour lire le fichier dictionnaire en fonction du nom du fichier(si on veut le français ou l'anglais).
+        /// Methode pour lire le fichier dictionnaire en fonction du nom du fichier(si on veut le français ou l'anglais).
         /// Elle renvoie une liste de liste de string avec l'ensemble de données du tableau. Ainsi chaque sous liste
         /// correspond à une taille de lettre (ex le premier element regroupe les lettres de deux mots) et chaque sous 
         /// liste est trié par ordre alphabetique
@@ -177,12 +174,10 @@ namespace Projet_boogle
                 return tableau;
             }
 
-            // Sélection du pivot (ici, on prend le dernier élément)
             string pivot = tableau[tableau.Count - 1];
             List<string> gauche = new List<string>();
             List<string> droite = new List<string>();
 
-            // Division des éléments par rapport au pivot
             for (int i = 0; i < tableau.Count - 1; i++)
             {
                 if (tableau[i].CompareTo(pivot) <= 0)
@@ -195,11 +190,9 @@ namespace Projet_boogle
                 }
             }
 
-            // Application récursive du tri rapide sur les sous-listes
             gauche = tri_rapide(gauche);
             droite = tri_rapide(droite);
 
-            // Combinaison des résultats
             gauche.Add(pivot);
             gauche.AddRange(droite);
 
@@ -225,15 +218,15 @@ namespace Projet_boogle
 
             int milieu = (debut + fin) / 2;
 
-            if (dicoMotXLettres[milieu].CompareTo(elem) == 0) // on a trouvé le mot cherché
+            if (dicoMotXLettres[milieu].CompareTo(elem) == 0)
             {
                 return milieu;
             }
-            else if (dicoMotXLettres[milieu].CompareTo(elem) > 0) // Le mot cherché est avant
+            else if (dicoMotXLettres[milieu].CompareTo(elem) > 0) 
             {
                 return Dichotomique(dicoMotXLettres, elem, milieu - 1, debut);
             }
-            else // Le mot cherché est après
+            else 
             {
                 return Dichotomique(dicoMotXLettres, elem, fin, milieu + 1);
             }
@@ -250,11 +243,10 @@ namespace Projet_boogle
             {
                 if (chaineCaractères[i] != this.motsOrdreAlpha[milieu][i])
                 {
-                    if (this.motsOrdreAlpha[milieu].CompareTo(chaineCaractères) > 0) // Le mot cherché est avant
-                    {
+                    if (this.motsOrdreAlpha[milieu].CompareTo(chaineCaractères) > 0) {
                         return Existence(chaineCaractères, milieu - 1, debut);
                     }
-                    else // Le mot cherché est après
+                    else 
                     {
                         return Existence(chaineCaractères, fin, milieu + 1);
                     }

@@ -18,7 +18,6 @@ namespace Projet_boogle
         private TimeSpan dureeTimer;
         private DateTime debutTour;
 
-        //attributs statiques permettant de stocker les options
         private static TimeSpan dureeTimer_option;
         private static int nbJoueurs_option;
         private static int nbTours_option;
@@ -177,7 +176,7 @@ namespace Projet_boogle
                 }
             }
 
-            // On cherche quel est le jouer avec le meilleur score
+
             Joueur vainqueur = joueurs[0];
             for (int i = 1; i < joueurs.Length; i++)
             {
@@ -187,7 +186,6 @@ namespace Projet_boogle
                 }
             }
 
-            //une fois trouvé, on l'affiche à l'écran: 
             Console.WriteLine(Program.AffichageVictoire(vainqueur.Nom, vainqueur.Score));
 
             Console.WriteLine("\n\nAppuyez sur une touche pour continuer");
@@ -195,7 +193,6 @@ namespace Projet_boogle
             Console.Clear();
 
 
-            //La dernière étape est de mettre à jouer les differents paramettres
             for (int i = 0; i < nbJoueurs; i++)
             {
                 MajMotsJoueur(joueurs[i]);
@@ -249,7 +246,6 @@ namespace Projet_boogle
         
         private void MajMotsJoueur( Joueur joueur)
         {
-            //étape pour verifier si on a deja enregistré des mots pour ce joueur
             if (mots_joueurs == null)
             {
                 mots_joueurs = new Dictionary<string, List<string>>();
@@ -260,14 +256,12 @@ namespace Projet_boogle
                 mots_joueurs[joueur.Nom] = new List<string>();
             }
 
-            //On prend l'ensemble des mots qu'il a écrit pour les placer dans une liste desordonné
             List<string> motsVrac = new List<string>(mots_joueurs[joueur.Nom]);
             for (int tour = 0; tour < nbToursPartie; tour++)
             {
                 for (int k = 0; k < joueur.MotsTrouvés[tour].Count; k++)
                 {
                     string mot = joueur.MotsTrouvés[tour][k];
-                    //étape important pour éviter les doublons
                     if (!motsVrac.Contains(mot)) 
                     {
                         motsVrac.Add(mot);
@@ -275,14 +269,13 @@ namespace Projet_boogle
                 }
             }
 
-            //étape finale pour trié les mots dans l'ordre décroissant de leurs score
             for (int i = 0; i < motsVrac.Count - 1; i++)
             {
                 for (int j = i + 1; j < motsVrac.Count; j++)
                 {
                     if (Joueur.Calcul_Score(motsVrac[i]) < Joueur.Calcul_Score(motsVrac[j]))
                     {
-                        // Échange des mots
+
                         string temp = motsVrac[i];
                         motsVrac[i] = motsVrac[j];
                         motsVrac[j] = temp;
@@ -290,31 +283,26 @@ namespace Projet_boogle
                 }
             }
 
-            //à la fin de cette étape, motsVrac ne contient plus les mots en vrac, on peut donc les ajouter à l'ensemble des mots trié
             mots_joueurs[joueur.Nom] = motsVrac;
         }
 
         private void MajMeilleursScores(Joueur joueur)
         {
-            //on verifie si les tableaux on bien été initialisé
             if (meilleursScores == null || nomJoueurMeilleursScores == null)
             {
                 meilleursScores = new int[20];
                 nomJoueurMeilleursScores = new string[20];
             }
 
-            //On place le nouveau score
             for (int i = 0; i < meilleursScores.Length; i++)
             {
                 if (joueur.Score > meilleursScores[i])
                 {
-                    // Si le nouveau score est plus grand que les precedent, il faut decaller les autres scores..
                     for (int j = meilleursScores.Length - 1; j > i; j--)
                     {
                         meilleursScores[j] = meilleursScores[j - 1];
                         nomJoueurMeilleursScores[j] = nomJoueurMeilleursScores[j - 1];
                     }
-                    // ..pour pouvoir placer le nouveau score et son nom
                     meilleursScores[i] = joueur.Score;
                     nomJoueurMeilleursScores[i] = joueur.Nom;
                     break;
