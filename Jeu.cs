@@ -125,7 +125,10 @@ namespace Projet_boogle
         }
 
         /// <summary>
-        /// Méthode qui gere tout ce qui est relatif à une partie, via deux boucle pour chaque tour puis chaque joueur. A 
+        /// Méthode qui gere tout ce qui est relatif à une partie, via deux boucle pour
+        /// chaque tour puis chaque joueur. A l'interieur des boucles, le programme s'occupe
+        /// de l'affichage, de la reception des mots et de leurs verification. Enfin à la fin
+        /// de la methode, elle affiche de vainqueur et met à jour les differents tableaux
         /// </summary>
         public void jouer()
         {
@@ -206,6 +209,11 @@ namespace Projet_boogle
             }
         }
         
+        /// <summary>
+        /// Methode pour mettre à jour les mots de chaque joueur, le dictionnaire permettant ensuite
+        /// d'afficher un nuage de moi, propre à chaque joueur en fonction des mots qu'il a choisit
+        /// </summary>
+        /// <param name="joueur"></param>
         private void MajMotsJoueur( Joueur joueur)
         {
             if (mots_joueurs == null)
@@ -244,6 +252,12 @@ namespace Projet_boogle
             mots_joueurs[joueur.Nom] = motsVrac;
         }
 
+        /// <summary>
+        /// Methode pour mettre à jour les tableau contenant les meilleurs score et les pseudo
+        /// correspondant. Le programme tri les score par ordre decroissant pour faciliter l'affichage
+        /// dans les parametres
+        /// </summary>
+        /// <param name="joueur"></param>
         private void MajMeilleursScores(Joueur joueur)
         {
             if (meilleursScores == null || nomJoueurMeilleursScores == null)
