@@ -20,7 +20,7 @@ namespace Projet_boogle
 
             Console.WriteLine(Program.AffichageTitre());
             Thread.Sleep(3000);
-            Console.Clear();
+            //Console.Clear();
 
             Jeu.DureeTimer_option = TimeSpan.FromSeconds(60);
             Jeu.NbJoueurs_option = 2;
@@ -43,7 +43,7 @@ namespace Projet_boogle
                     "6- Quitter le jeu\n\n" +
                     "Quel est votre choix ?");
                 choix = Program.SaisieNombreSecur();
-                Console.Clear();
+                //Console.Clear();
 
                 switch (choix)
                 {
@@ -59,7 +59,7 @@ namespace Projet_boogle
                             Console.WriteLine("Il faut avoir deja jouer pour avoir des meilleurs scores...");
                             Console.WriteLine("\nAppuyez sur une touche pour quitter");
                             Console.ReadKey();
-                            Console.Clear();
+                            //Console.Clear();
                             break;
                         }
                         Console.WriteLine("Le meilleur score est de " + Jeu.MeilleursScores[0] +
@@ -78,7 +78,7 @@ namespace Projet_boogle
                         }
                         Console.WriteLine("\nAppuyez sur une touche pour quitter");
                         Console.ReadKey();
-                        Console.Clear();
+                        //Console.Clear();
                         break;
                     case 3:
                         if (Jeu.Mots_joueurs == null || Jeu.Mots_joueurs.Count == 0)
@@ -122,13 +122,13 @@ namespace Projet_boogle
 
                         Console.WriteLine("\nAppuyez sur une touche pour continuer");
                         Console.ReadKey();
-                        Console.Clear();
+                        //Console.Clear();
                         break;
                     case 4:
                         Console.WriteLine(Program.AffichageRegles());
                         Console.WriteLine("\nAppuyez sur une touche pour continuer");
                         Console.ReadKey();
-                        Console.Clear();
+                        //Console.Clear();
                         break;
                     case 5:
                         int choix_option = 0;
@@ -142,28 +142,28 @@ namespace Projet_boogle
                                 "\n6-Sortir" +
                                 "\nQue souhaitez-vous modifier ?");
                             choix_option = Program.SaisieNombreSecur();
-                            Console.Clear();
+                            //Console.Clear();
                             switch (choix_option)
                             {
                                 case 1:
                                     Console.WriteLine("Modification de la taille du plateau\nQuelle est la nouvelle taille ?");
                                     Jeu.TaillePlateau_option = Program.SaisieNombreSecur();
-                                    Console.Clear();
+                                    //Console.Clear();
                                     break;
                                 case 2:
                                     Console.WriteLine("Modification du timer\nQuelle est sa nouvelle durée (en secondes) ?");
                                     Jeu.DureeTimer_option = TimeSpan.FromSeconds(Program.SaisieNombreSecur());
-                                    Console.Clear();
+                                    //Console.Clear();
                                     break;
                                 case 3:
                                     Console.WriteLine("Modification du nombre de tour\nCombien de tours souhaitez-vous ?");
                                     Jeu.NbTours_option = Program.SaisieNombreSecur();
-                                    Console.Clear();
+                                    //Console.Clear();
                                     break;
                                 case 4:
                                     Console.WriteLine("Modification du nombre de joueur\nCombien de joueurs souhaitez-vous ?");
                                     Jeu.NbJoueurs_option = Program.SaisieNombreSecur();
-                                    Console.Clear();
+                                    //Console.Clear();
                                     break;
                                 case 5:
                                     Console.WriteLine("Modification de la langue");
@@ -174,7 +174,7 @@ namespace Projet_boogle
                                         langue = Console.ReadLine();
                                     } while (langue != "anglais" && langue != "francais");
                                     Jeu.Langue_option = langue;
-                                    Console.Clear();
+                                    //Console.Clear();
                                     break;
                                 case 6:
                                     Console.WriteLine("Sortie des options");

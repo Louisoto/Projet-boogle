@@ -140,7 +140,7 @@ namespace Projet_boogle
                 {
                     Commencer_tour();
                     while (Verification_timer()) {
-                        Console.Clear();
+                        //Console.Clear();
                         this.joueurs[j].toStringSimple();
                         Console.WriteLine("Temps restant : " + tempsRestant().Minutes +
                             " minute(s) et " + tempsRestant().Seconds + " secondes.\n");
@@ -172,7 +172,7 @@ namespace Projet_boogle
                         }
                         Console.ResetColor();
                     }
-                    Console.Clear();
+                    //Console.Clear();
                     Console.WriteLine(joueurs[j].toString(i));
                     Console.Write("C'est au tour ");
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -188,7 +188,7 @@ namespace Projet_boogle
                     Console.WriteLine(" de jouer\n" +
                                       "Appuyez sur une touche pour continuer");
                     Console.ReadKey();
-                    Console.Clear();
+                    //Console.Clear();
                     this.plateau.melanger();
                 }
             }
@@ -203,7 +203,7 @@ namespace Projet_boogle
             Console.WriteLine(Program.AffichageVictoire(vainqueur.Nom, vainqueur.Score));
             Console.WriteLine("\n\nAppuyez sur une touche pour continuer");
             Console.ReadKey();
-            Console.Clear();
+            //Console.Clear();
             for (int i = 0; i < nbJoueurs; i++)
             {
                 MajMotsJoueur(joueurs[i]);
