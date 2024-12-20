@@ -94,16 +94,27 @@ namespace Projet_boogle
         #endregion
 
         #region Methodes
+        /// <summary>
+        /// Méthode pour inititialiser le chronometre à 0
+        /// </summary>
         public void Commencer_tour()
         {
             debutTour = DateTime.Now;
         }
 
+        /// <summary>
+        /// Méthode pour calculer le temps restant en prennant le temps du debut ainsi que la durée totale du timer
+        /// </summary>
+        /// <returns></returns>
         public TimeSpan tempsRestant()
         {
             return (this.dureeTimer - (DateTime.Now - this.debutTour));
         }
 
+        /// <summary>
+        /// Méthoque qui verifie si le temps d'une manche n'est pas écoulé
+        /// </summary>
+        /// <returns></returns>
         public bool Verification_timer()
         {
             if (tempsRestant() <= TimeSpan.Zero)
@@ -113,6 +124,9 @@ namespace Projet_boogle
             return true;
         }
 
+        /// <summary>
+        /// Méthode qui gere tout ce qui est relatif à une partie, via deux boucle pour chaque tour puis chaque joueur. A 
+        /// </summary>
         public void jouer()
         {
             for (int i = 0; i < nbToursPartie; i++)
