@@ -32,7 +32,8 @@ namespace Projet_boogle
 
         #region Méthode
         /// <summary>
-        /// Cette méthode retourne une chaine de caractère qui affiche le plateau avec la face visible de tous les dés et un petit décor
+        /// Cette méthode retourne une chaine de caractère qui affiche le plateau avec la face visible
+        /// de tous les dés et un petit décor
         /// </summary>
         /// <returns></returns>
         public string toString()
@@ -106,6 +107,12 @@ namespace Projet_boogle
             return message;
         }
 
+
+        /// <summary>
+        /// Methode proche de la precedente, mais on y ajoute de la couleur pour le confort de
+        /// l'utilisateur. Il faut donc afficher directement le plateau, et ne pas renvoyer une
+        /// chaine de caractere
+        /// </summary>
         public void toStringCouleur()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;

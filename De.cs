@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Projet_boogle
 {
-    internal class De
+    public class De
     {
         #region Attributs
         private char[] faces;
