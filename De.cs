@@ -24,17 +24,17 @@ namespace Projet_boogle
             set { face_visible = value; }
         }
 
-        public char[] Lettres
+        public static char[] Lettres
         {
             get { return lettres; }
         }
 
-        public int[] Point_lettres
+        public static int[] Point_lettres
         {
             get { return point_lettres; }
         }
 
-        public int[] Probabilite_lettre
+        public static int[] Probabilite_lettre
         {
             get { return probabilite_lettre; }
         }

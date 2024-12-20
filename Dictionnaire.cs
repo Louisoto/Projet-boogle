@@ -151,7 +151,7 @@ namespace Projet_boogle
         /// </summary>
         /// <param name="tableau"></param>
         /// <returns></returns>
-        static List<string> tri_rapide(List<string> tableau)
+        public static List<string> tri_rapide(List<string> tableau)
         {
             if (tableau.Count <= 1)
             {

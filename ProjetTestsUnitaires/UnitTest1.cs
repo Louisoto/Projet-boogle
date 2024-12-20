@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Projet_boogle
 {
@@ -36,7 +37,7 @@ namespace Projet_boogle
         #endregion
 
         [TestMethod]
-        #region louis
+        #region Test méthode initialisationValLettres
         public void TestMethod2()
         {
             De.initialisationValLettres("francais");
@@ -50,7 +51,63 @@ namespace Projet_boogle
             CollectionAssert.AreEqual(probabiliteAttendu, De.Probabilite_lettre);
 
         }
+        #endregion
 
+        [TestMethod]
+        #region Test méthode Dichotomie
+        public void TestMethod3()
+        {
+            Dictionnaire dictionnaire = new Dictionnaire("francais");
+
+            bool result_true = dictionnaire.Dichotomie("AVION");
+            bool result_false = dictionnaire.Dichotomie("BOULGIBOULGA");
+
+            Assert.IsTrue(result_true);
+            Assert.IsFalse(result_false);
+        }
+        #endregion
+
+        [TestMethod]
+        #region Test méthode initialisationValLettres
+        public void TestMethod4()
+        {
+            De.initialisationValLettres("francais");
+
+            int score_1 = Joueur.Calcul_Score("AZIMBOLICOTINATIONNALISABLE");
+            int score_2 = Joueur.Calcul_Score("KZKZXWKXZW");
+            int score_3 = Joueur.Calcul_Score("EE");
+
+            Assert.AreEqual(score_1, 559);
+            Assert.AreEqual(score_2, 500);
+            Assert.AreEqual(score_3, 2);
+        }
+        #endregion
+
+
+        [TestMethod]
+        #region Test méthode tri_rapide
+        public void TestMethod5()
+        {
+            List<string> listeBazar = new List<string>
+            {
+                "TREMPES", "BRODEQUINS", "ACCOUDA", "DEPENDEZ", "EBLOUISSONS", "BIFFER",
+                "SORGHOS", "EMANEES", "AVENTURE", "ENDORMIREZ", "BRUSQUE", "MISSIONS",
+                "CONTESTAIENT", "SUBJUGUERONT", "BUVARD", "FRAGMENTERENT", "BEGONIAS",
+                "PRESUPPOSERAIT", "ENONCE", "HARPONNIEZ", "DISCONVENEZ", "DENSITE", "TIMIDES",
+                "AMENAIS", "DRESSEUSE", "LARMOYANT", "REEDITERA"
+            };
+
+            List<string> listeTriee = new List<string>
+            {
+                "ACCOUDA", "AMENAIS", "AVENTURE", "BEGONIAS", "BIFFER", "BRODEQUINS", "BRUSQUE",
+                "BUVARD", "CONTESTAIENT", "DENSITE", "DEPENDEZ", "DISCONVENEZ", "DRESSEUSE",
+                "EBLOUISSONS", "EMANEES", "ENDORMIREZ", "ENONCE", "FRAGMENTERENT", "HARPONNIEZ",
+                "LARMOYANT", "MISSIONS", "PRESUPPOSERAIT", "REEDITERA", "SORGHOS", "SUBJUGUERONT",
+                "TIMIDES", "TREMPES"
+            };
+
+            CollectionAssert.AreEqual(Dictionnaire.tri_rapide(listeBazar), listeTriee);
+        }
         #endregion
     }
 }
