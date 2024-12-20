@@ -27,6 +27,8 @@ namespace Projet_boogle
             plateau.ElemPlateau(1, 2).Face_visible = 'Z';
             plateau.ElemPlateau(3, 3).Face_visible = 'Z';
 
+            plateau.toStringCouleur();
+
             bool result = plateau.Test_Plateau("AFFECTIONNEE");
             Assert.AreEqual(result, true);
         }
