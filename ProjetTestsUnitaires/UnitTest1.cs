@@ -68,7 +68,7 @@ namespace Projet_boogle
         #endregion
 
         [TestMethod]
-        #region Test méthode initialisationValLettres
+        #region Test méthode Calcul_Score
         public void TestMethod4()
         {
             De.initialisationValLettres("francais");
