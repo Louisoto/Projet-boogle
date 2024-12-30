@@ -172,7 +172,7 @@ namespace Projet_boogle
                         }
                         Console.ResetColor();
                     }
-                    //Console.Clear();
+                    Console.Clear();
                     Console.WriteLine(joueurs[j].toString(i));
                     Console.Write("C'est au tour ");
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -188,7 +188,7 @@ namespace Projet_boogle
                     Console.WriteLine(" de jouer\n" +
                                       "Appuyez sur une touche pour continuer");
                     Console.ReadKey();
-                    //Console.Clear();
+                    Console.Clear();
                     this.plateau.melanger();
                 }
             }
